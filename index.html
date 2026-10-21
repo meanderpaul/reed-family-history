@@ -225,7 +225,9 @@
       .record dd b { font-weight: 600; }
 
       /* ---------- Credits ---------- */
-      .credit-role { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); margin: 2px 0 8px; }
+      .credits-names { font-family: "Source Serif 4", Georgia, serif; font-size: 1.35rem; font-weight: 600; line-height: 1.5; margin: 6px 0 0; }
+      .credits-names span { white-space: nowrap; }
+      @media (max-width: 560px) { .credits-names { font-size: 1.2rem; } }
 
       /* ---------- Callouts ---------- */
       .callout { border-radius: 10px; padding: 20px 22px; margin: 18px 0; border: 1px solid var(--line); }
@@ -391,25 +393,8 @@
 
         <!-- ================= CREDITS ================= -->
         <section id="credits">
-          <h2>The people behind this record</h2>
-          <p class="section-intro">This record is a family project. The research behind it belongs to three members of the family, credited here together.</p>
-          <div class="cards three">
-            <article class="card">
-              <h3>Dan Reed</h3>
-              <p class="credit-role">Researcher</p>
-              <p>Dan Reed, Paul's cousin and the son of Mark Reed, is one of the three researchers behind this record, working alongside his uncle Paul and his cousin Paul II.</p>
-            </article>
-            <article class="card">
-              <h3>Paul Reed</h3>
-              <p class="credit-role">Researcher</p>
-              <p>Paul Reed, father of Paul Reed II and brother of Arthur and Mark, is one of the three researchers behind this record, working alongside his son Paul II and his nephew Dan.</p>
-            </article>
-            <article class="card">
-              <h3>Paul Reed II</h3>
-              <p class="credit-role">Researcher</p>
-              <p>Paul Reed II, son of Paul Reed, is one of the three researchers behind this record, working alongside his father and his cousin Dan, and he keeps this page.</p>
-            </article>
-          </div>
+          <h2>Research credits</h2>
+          <p class="credits-names"><span>Paul Reed</span> &middot; <span>Paul Reed Sr</span> &middot; <span>Dan Reed</span></p>
         </section>
       </div>
 
