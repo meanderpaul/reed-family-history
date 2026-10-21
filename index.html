@@ -78,6 +78,28 @@
       .tabbar button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
       .tabbar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
+      /* ---------- Mobile nav: hamburger toggle ---------- */
+      /* Hidden by default; shown only on small screens once JS has taken
+         over the tabs (.tabs-on), so the no-JS page keeps the plain tab row. */
+      .nav-toggle {
+        display: none;
+        font: inherit; font-size: 0.93rem; font-weight: 600;
+        padding: 10px 16px; border-radius: 999px;
+        border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+        cursor: pointer; min-height: 44px;
+        align-items: center; gap: 10px;
+      }
+      .nav-toggle .bars { display: inline-flex; flex-direction: column; gap: 4px; flex: none; }
+      .nav-toggle .bars span { display: block; width: 18px; height: 2px; background: currentColor; border-radius: 2px; }
+      .nav-toggle .nav-current { color: var(--ink-soft); font-weight: 500; }
+      .nav-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      @media (max-width: 719px) {
+        .tabs-on .nav-toggle { display: inline-flex; }
+        .tabs-on .tabbar .tabs { display: none; flex-direction: column; flex-wrap: nowrap; margin-top: 10px; }
+        .tabs-on .tabbar.menu-open .tabs { display: flex; }
+        .tabs-on .tabbar .tabs button { width: 100%; text-align: left; border-radius: 10px; }
+      }
+
       /* Panels: without JS every panel shows, one long page. With JS, one at a time. */
       .tabs-on .panel { display: none; }
       .tabs-on .panel.active { display: block; }
@@ -255,7 +277,12 @@
 
       <!-- ================= PAGE TABS ================= -->
       <nav class="tabbar" aria-label="Pages of this site">
-        <div class="tabs" role="tablist">
+        <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="pageTabs">
+          <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>Menu</span>
+          <span class="nav-current" id="navCurrent">The story</span>
+        </button>
+        <div class="tabs" id="pageTabs" role="tablist">
           <button type="button" role="tab" id="tab-story" aria-controls="panel-story" aria-selected="true" data-panel="story">The story</button>
           <button type="button" role="tab" id="tab-family" aria-controls="panel-family" aria-selected="false" data-panel="family">The family line</button>
           <button type="button" role="tab" id="tab-colonial" aria-controls="panel-colonial" aria-selected="false" data-panel="colonial">The colonial line</button>
@@ -1018,6 +1045,25 @@
           panels[p.getAttribute('data-panel')] = p;
         });
 
+        /* ---------- Mobile hamburger menu ---------- */
+        var navBar = document.querySelector('.tabbar');
+        var navToggle = document.getElementById('navToggle');
+        var navCurrent = document.getElementById('navCurrent');
+        function closeMenu() {
+          if (!navBar || !navToggle) return;
+          navBar.classList.remove('menu-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+        if (navToggle && navBar) {
+          navToggle.addEventListener('click', function () {
+            var open = navBar.classList.toggle('menu-open');
+            navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          });
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeMenu();
+          });
+        }
+
         function panelForHash(hash) {
           if (!hash || hash === '#') return null;
           var el = document.querySelector(hash);
@@ -1032,6 +1078,12 @@
           tabs.forEach(function (t) {
             t.setAttribute('aria-selected', t.getAttribute('data-panel') === name ? 'true' : 'false');
           });
+          if (navCurrent) {
+            for (var ti = 0; ti < tabs.length; ti++) {
+              if (tabs[ti].getAttribute('data-panel') === name) { navCurrent.textContent = tabs[ti].textContent; break; }
+            }
+          }
+          closeMenu();
           Object.keys(panels).forEach(function (key) {
             panels[key].classList.toggle('active', key === name);
           });
