@@ -208,6 +208,16 @@
       .card .spouse { font-size: 0.9rem; color: var(--ink-soft); border-top: 1px solid var(--line); padding-top: 9px; margin-top: 12px; }
       .card .spouse b { color: var(--ink); font-weight: 600; }
 
+      /* ---------- Service record (soldiers page) ---------- */
+      .record { margin: 0 0 12px; display: grid; gap: 5px; font-size: 0.94rem; }
+      .record > div { display: flex; gap: 12px; }
+      .record dt {
+        flex: 0 0 86px; padding-top: 3px;
+        font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft);
+      }
+      .record dd { margin: 0; }
+      .record dd b { font-weight: 600; }
+
       /* ---------- Credits ---------- */
       .credit-role { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); margin: 2px 0 8px; }
 
@@ -316,6 +326,7 @@
         <div class="tabs" id="pageTabs" role="tablist">
           <button type="button" role="tab" id="tab-story" aria-controls="panel-story" aria-selected="true" data-panel="story">The story</button>
           <button type="button" role="tab" id="tab-family" aria-controls="panel-family" aria-selected="false" data-panel="family">The family line</button>
+          <button type="button" role="tab" id="tab-soldiers" aria-controls="panel-soldiers" aria-selected="false" data-panel="soldiers">The soldiers</button>
           <button type="button" role="tab" id="tab-prescott" aria-controls="panel-prescott" aria-selected="false" data-panel="prescott">The Prescotts</button>
           <button type="button" role="tab" id="tab-documents" aria-controls="panel-documents" aria-selected="false" data-panel="documents">Documents</button>
           <button type="button" role="tab" id="tab-other" aria-controls="panel-other" aria-selected="false" data-panel="other">The other Reeds</button>
@@ -707,6 +718,160 @@
               </div>
             </li>
           </ol>
+        </section>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- PAGE: THE SOLDIERS                                           -->
+      <!-- ============================================================ -->
+      <div class="panel" id="panel-soldiers" data-panel="soldiers" role="tabpanel" aria-labelledby="tab-soldiers">
+
+        <!-- ================= THE SOLDIERS ================= -->
+        <section id="soldiers">
+          <h2>The soldiers</h2>
+          <p class="section-intro">The men in this record who carried arms, set out war by war: what each one did, the rank he held, the dates he served, and how he stands to the people in the trees. Thomas Read fought in <strong>King Philip's War</strong> in 1676. A century later the <strong>Revolutionary War</strong> took four men of one Westford household: Capt. Joseph Read, whose captaincy heads this page; his son Joshua, who answered the Lexington alarm on the war's first day; and Joshua's sons Elnathan and Joshua Jr., both Continental soldiers while still in their teens and twenties. The Revolutionary details come from the official <strong>Massachusetts Soldiers and Sailors of the Revolutionary War</strong> roster; the documents behind every entry are reproduced at the foot of this page.</p>
+
+          <h3 class="serif" style="font-size: 1.4rem; margin: 30px 0 14px;">King Philip's War, 1675 to 1678</h3>
+          <div class="cards">
+            <article class="card">
+              <h3>Thomas Read</h3>
+              <div class="meta"><span class="dates">c. 1656 – 1730/36</span><span class="relation">Generation I · head of the line</span><span class="chip doc">Documented</span></div>
+              <dl class="record">
+                <div><dt>Relation</dt><dd>8th great-grandfather of Paul Reed II. Father of Thomas Read Jr. (Gen. II), and ancestor of everyone in the Reed trees.</dd></div>
+                <div><dt>Rank</dt><dd>Soldier in <b>Capt. William Turner's</b> company. The Falls Fight roster lists him by name among Turner's men, with no rank above the soldiers around him.</dd></div>
+                <div><dt>Captivity</dt><dd>Taken captive in the spring of 1676 and held in the camps, where Mary Rowlandson met him and wrote about him in her narrative.</dd></div>
+                <div><dt>Escape</dt><dd><b>May 15, 1676:</b> escaped and reached Hatfield, carrying word of the encampments near the falls of the Connecticut River.</dd></div>
+                <div><dt>Battle</dt><dd>The Falls Fight at Peskeompskut (Turner's Falls), <b>May 19, 1676</b>, four days after his escape.</dd></div>
+              </dl>
+              <p>Thomas's presence at the Falls Fight rests on the roster Bodge printed in <em>Soldiers in King Philip's War</em>: the list of Turner's men approved by the Committee of the General Court in June 1736 for the township grants, where the right-hand column of page 251 reads "Read, Thomas, Westford." He survived the war, was made a freeman on April 1, 1679, and settled at Chelmsford as a tailor.</p>
+              <p>His full story is on his card: <a href="#thomas-read" data-open-card="thomas-read">open Thomas Read's card</a>.</p>
+            </article>
+          </div>
+
+          <h3 class="serif" style="font-size: 1.4rem; margin: 34px 0 14px;">The Revolutionary War, 1775 to 1783</h3>
+          <div class="cards">
+            <article class="card">
+              <h3>Capt. Joseph Read</h3>
+              <div class="meta"><span class="dates">b. June 4, 1716</span><span class="relation">Generation III · Westford, Massachusetts</span><span class="chip doc">Documented</span></div>
+              <dl class="record">
+                <div><dt>Relation</dt><dd>6th great-grandfather of Paul Reed II. Son of Thomas Read Jr. (Gen. II), father of Joshua Read (Gen. IV).</dd></div>
+                <div><dt>Rank</dt><dd><b>Captain.</b> The title runs through the records, and his is the family's one officer's commission of the era: every other soldier on this page served in the ranks.</dd></div>
+                <div><dt>Service</dt><dd>Revolutionary-era civic and political leadership in Westford, with activity tied to the Massachusetts Provincial Congress. No Continental enlistment or campaign record for him is documented on this site: his war work, as the records present it, was that of a town leader, not a soldier in the field.</dd></div>
+                <div><dt>Flagged</dt><dd>The Boston Tea Party, <b>December 16, 1773</b>: the Westford Historical Society counts him a participant; the Tea Party museum's researchers dispute it. The claim stays flagged on the <a href="#documented">Family line page</a>.</dd></div>
+              </dl>
+              <p>His full story is on his card: <a href="#joseph-read" data-open-card="joseph-read">open Capt. Joseph Read's card</a>.</p>
+            </article>
+            <article class="card">
+              <h3>Joshua Read</h3>
+              <div class="meta"><span class="dates">b. December 1, 1737</span><span class="relation">Generation IV · Westford, Massachusetts</span><span class="chip doc">Documented</span></div>
+              <dl class="record">
+                <div><dt>Relation</dt><dd>5th great-grandfather of Paul Reed II. Son of Capt. Joseph Read (Gen. III), father of Isaiah (Gen. V) and of two more soldiers on this page, Elnathan and Joshua Jr.</dd></div>
+                <div><dt>Rank</dt><dd>Private, militia.</dd></div>
+                <div><dt>Service</dt><dd>The Lexington alarm, <b>April 19, 1775</b>, in <b>Capt. Jonathan Minot's</b> militia company: three days' service on the alarm, on the first day of the Revolutionary War.</dd></div>
+                <div><dt>Dates</dt><dd>April 19, 1775, and the two days following. The Massachusetts roster records no Continental enlistment for him after those three days.</dd></div>
+              </dl>
+              <p>His service was militia only, and this page keeps it stated that plainly, so nobody mistakes his three days on the alarm for an army enlistment of the kind his sons later took.</p>
+              <p>His full story is on his card: <a href="#joshua-read" data-open-card="joshua-read">open Joshua Read's card</a>.</p>
+            </article>
+            <article class="card">
+              <h3>Elnathan Read</h3>
+              <div class="meta"><span class="dates">1758 – 1841</span><span class="relation">Westford, Massachusetts · Isaiah's older brother</span><span class="chip doc">Documented</span></div>
+              <dl class="record">
+                <div><dt>Relation</dt><dd>4th great-granduncle of Paul Reed II. Son of Joshua Read (Gen. IV), older brother of Isaiah (Gen. V), and husband of <a href="#anne-prescott">Anne Prescott</a>, which ties his service to the Prescotts page.</dd></div>
+                <div><dt>Rank</dt><dd>Private, Continental Army.</dd></div>
+                <div><dt>Enlisted</dt><dd>Militia service in <b>1776</b>, then a full three-year Continental enlistment from <b>May 1777</b>.</dd></div>
+                <div><dt>Unit</dt><dd><b>Capt. Ballard's</b> company, <b>Col. Alden's</b> Massachusetts regiment. After Alden was killed in the Cherry Valley Massacre of November 1778, the regiment continued as the 7th Massachusetts under Lt. Col. Brooks.</dd></div>
+                <div><dt>Battle</dt><dd>Cherry Valley, New York, <b>1779</b>: the roster places Elnathan there with the regiment.</dd></div>
+                <div><dt>Discharged</dt><dd><b>May 1780</b>, at the end of the three-year term.</dd></div>
+                <div><dt>Pension</dt><dd>Drawing a Revolutionary pension at the end of his life: the 1840 Census of Pensioners lists him at Cavendish, Vermont, aged 85.</dd></div>
+              </dl>
+              <p>The longest service of any man in this record: militia time in 1776, then three full years in the Continental Army. The Prescott Memorial, Anne's family genealogy, sums it up in one line: he served in the Continental Army "throughout the Revolution."</p>
+              <p>His full story is on his card: <a href="#elnathan-read" data-open-card="elnathan-read">open Elnathan Read's card</a>.</p>
+            </article>
+            <article class="card">
+              <h3>Joshua Read Jr.</h3>
+              <div class="meta"><span class="dates">b. March 6, 1763</span><span class="relation">Westford, Massachusetts · Isaiah's older brother</span><span class="chip doc">Documented</span></div>
+              <dl class="record">
+                <div><dt>Relation</dt><dd>4th great-granduncle of Paul Reed II. Son of Joshua Read (Gen. IV), brother of Isaiah (Gen. V) and of Elnathan. A brother in the line, not a link in it: an early draft of the line once placed him as a possible extra generation, and the Westford records correct that.</dd></div>
+                <div><dt>Rank</dt><dd>Private, Continental Army.</dd></div>
+                <div><dt>Enlisted</dt><dd><b>1779</b>, at sixteen years old.</dd></div>
+                <div><dt>Service</dt><dd>Nine months in <b>1779 to 1780</b> with <b>Col. Jackson's 8th Massachusetts</b>, followed by a six-month levy through the end of <b>1780</b>.</dd></div>
+                <div><dt>Discharged</dt><dd>End of <b>1780</b>, at the close of the six-month levy.</dd></div>
+              </dl>
+              <p>Two Continental stints before he turned eighteen: the nine-month enlistment in the 8th Massachusetts, then the six-month levy the towns raised in 1780 to fill the army's ranks.</p>
+              <p>His full story is on his card: <a href="#joshua-read-jr" data-open-card="joshua-read-jr">open Joshua Read Jr.'s card</a>.</p>
+            </article>
+          </div>
+
+          <div class="callout neutral">
+            <h3>No riflemen, no dragoons</h3>
+            <p>The Massachusetts roster was checked for the war's specialist arms as well as the line regiments. Reeds do turn up in them, a Robert Reed among the riflemen, a James Reed in Sheldon's Light Dragoons, a Benjamin Reed in Morgan's Riflemen, but they come from other towns, and no record ties any of them to the Westford line. No man on this page served as a rifleman or a dragoon: this family's Revolutionary service was militia duty and line infantry.</p>
+          </div>
+
+          <h3 class="serif" style="font-size: 1.4rem; margin: 34px 0 14px;">Also in the records</h3>
+          <div class="cards">
+            <article class="card">
+              <h3>William Erving Reed</h3>
+              <div class="meta"><span class="dates">b. October 27, 1892 – 1957</span><span class="relation">Generation VIII · great-grandfather</span></div>
+              <dl class="record">
+                <div><dt>Record</dt><dd>Draft registration, <b>1942</b>, filed as William Erving Reed at 54 Station Street, Quincy, Massachusetts, with Charlotte named as the person who would always know his address.</dd></div>
+              </dl>
+              <p>A registration is not service, and it is set down here as a registration only: this site holds no record that William served, and no service entry is claimed for him.</p>
+              <p>His full story is on his card: <a href="#william-reed" data-open-card="william-reed">open William Erving Reed's card</a>.</p>
+            </article>
+            <article class="card">
+              <h3>Joshua Reed, of Reed's Pond</h3>
+              <div class="meta"><span class="relation">early Stoddard settler</span><span class="chip none">No relation</span></div>
+              <dl class="record">
+                <div><dt>Record</dt><dd>Gould's <em>History of Stoddard</em> names him among the Revolutionary soldiers who afterwards lived in Stoddard. Reed's Pond, near where he once resided, still bears his name.</dd></div>
+              </dl>
+              <p>He is here so he is not merged into this page by mistake. Same surname, same war, same small town, but no record connects him to the Westford line, and he is not Joshua Read (Gen. IV) above. He stands with Stoddard's other, unrelated Reeds on <a href="#norelation">the other Reeds page</a>.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- ================= THE SOLDIERS: DOCUMENTS ================= -->
+        <section id="soldier-documents">
+          <h2>The documents behind the service records</h2>
+          <p class="section-intro">The paper each entry above rests on: the narrative passage that names Thomas Read in captivity, the Falls Fight roster that places him among Turner's men, the federal pensioner census that closes Elnathan's service, and the Prescott genealogy's one-line summary of that service. Tap any image to read it full size.</p>
+          <figure class="framed doc-figure">
+            <button class="shot-btn" data-zoom aria-haspopup="dialog">
+              <img src="assets/rowlandson-thirteenth-remove.png" alt="The Thirteenth Remove from Mary Rowlandson's Narrative of the Captivity and Restoration, 1682, with the passage naming Thomas Read as a captive brought from Hadley" width="1700" height="2200" loading="lazy" />
+              <span class="shot-hint">Tap to view the page full size</span>
+            </button>
+            <figcaption>Mary Rowlandson, A Narrative of the Captivity and Restoration of Mrs. Mary Rowlandson (1682), the Thirteenth Remove: "About this time they came yelping from Hadley, where they had killed three Englishmen, and brought one captive with them, viz. Thomas Read." Firsthand evidence of Thomas Read's captivity in the spring of 1676, before his escape of May 15.</figcaption>
+          </figure>
+          <figure class="framed doc-figure">
+            <button class="shot-btn" data-zoom aria-haspopup="dialog">
+              <img src="assets/bodge-falls-fight-p250.jpg" alt="Page 250 of Bodge's Soldiers in King Philip's War, opening the list of the soldiers in the Fall Fight under Captain William Turner, approved by the Committee of the General Court in June 1736" width="1930" height="3283" loading="lazy" />
+              <span class="shot-hint">Tap to view the book page full size</span>
+            </button>
+            <figcaption>George Madison Bodge, Soldiers in King Philip's War (Boston, 1906), p. 250: the opening of "A List of ye Soldiers yt were in ye Fall Fight under Capt. Wm Turner, approved off by ye Committee of ye Gen. Court. (Dated June, 1736.)" The roster behind Thomas Read's battle entry.</figcaption>
+          </figure>
+          <figure class="framed doc-figure">
+            <button class="shot-btn" data-zoom aria-haspopup="dialog">
+              <img src="assets/bodge-falls-fight-p251.jpg" alt="Page 251 of Bodge's Soldiers in King Philip's War, headed List of Turner's Men, with the entry 'Read, Thomas, Westford' in the right-hand column" width="1930" height="3283" loading="lazy" />
+              <span class="shot-hint">Tap to view the book page full size</span>
+            </button>
+            <figcaption>Bodge, Soldiers in King Philip's War, p. 251: the list continues, and in the right-hand column stands "Read, Thomas, Westford." The published roster placing Thomas Read among Captain Turner's men at the Falls Fight, May 19, 1676.</figcaption>
+          </figure>
+          <figure class="framed doc-figure">
+            <button class="shot-btn" data-zoom aria-haspopup="dialog">
+              <img src="assets/pensioner-1840-elnathan.png" alt="Extract from the 1840 Census of Pensioners for Windsor County, Vermont, town of Cavendish, with the row for Elnathan Reed, age 85, highlighted" width="1700" height="1400" loading="lazy" />
+              <span class="shot-hint">Tap to view the record full size</span>
+            </button>
+            <figcaption>The 1840 Census of Pensioners for Revolutionary or Military Services, Windsor County, Vermont, town of Cavendish: "Elnathan Reed, 85," listed as head of his own family. The federal record closing Elnathan Read's service: a Revolutionary pensioner at Cavendish some sixty years after his discharge in May 1780.</figcaption>
+          </figure>
+          <figure class="framed doc-figure">
+            <button class="shot-btn" data-zoom aria-haspopup="dialog">
+              <img src="assets/prescott-entry-603.jpg" alt="Page from the Prescott Memorial genealogy, headed 'Sixth Generation, Section III', with entry 603 at the foot: Annie Prescott, born May 7, 1761, married Elnathan Reed of Westford, Massachusetts" width="731" height="1292" loading="lazy" />
+              <span class="shot-hint">Tap to view the book page full size</span>
+            </button>
+            <figcaption>The Prescott Memorial, entry 603, under the issue of Timothy Prescott and Lydia Fletcher, on Annie Prescott's marriage to Elnathan Reed: "He served in the 'Continental Army' (as the patriotic army was then called) throughout the Revolution." The genealogy's service note for Elnathan, matching the Massachusetts roster's record of his 1777 to 1780 enlistment.</figcaption>
+          </figure>
+          <div class="prose">
+            <p>The Revolutionary service details themselves, enlistment dates, units and terms, come from <strong>Massachusetts Soldiers and Sailors of the Revolutionary War</strong>, the official roster compiled from the Massachusetts archives, listed in full on the <a href="#sources">Documents page</a>.</p>
+          </div>
         </section>
       </div>
 
