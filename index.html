@@ -114,6 +114,12 @@
       figure { margin: 0; }
       figure.framed img { border: 1px solid var(--line); border-radius: 6px; box-shadow: var(--shadow); }
       figcaption { font-size: 0.83rem; color: var(--ink-soft); margin-top: 8px; line-height: 1.45; }
+      .doc-tag {
+        display: table; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em;
+        text-transform: uppercase; padding: 2px 9px; border-radius: 999px; margin-bottom: 6px;
+      }
+      .doc-tag.scan { background: var(--accent-soft); color: var(--accent); }
+      .doc-tag.transcript { background: var(--open-soft); color: var(--open); }
 
       .legend { display: flex; flex-wrap: wrap; gap: 8px 22px; padding: 14px 0 4px; font-size: 0.9rem; color: var(--ink-soft); }
       .legend span { display: inline-flex; align-items: center; gap: 7px; }
@@ -354,7 +360,7 @@
                 <img class="doc-img" src="assets/homestead-diagram.jpg" alt="Hand-drawn 1976 diagram of the John Reed homestead site on Jackson Hill, Stoddard, showing the old cellar hole with its dimensions, the chimney bricks, the front door location, the old dirt road, a possible well and outhouse, the barn foundation and apple trees" width="993" height="1400" />
                 <span class="shot-hint">Tap to view the drawing full size</span>
               </button>
-              <figcaption>The John Reed homestead on Jackson Hill, Stoddard, drawn by hand in 1976 for Arlene Rasmussen's history of the property: the L-shaped cellar hole, the chimney bricks, the barn foundation across the old dirt road, and the apple trees the family planted. One of the family's own Stoddard documents, reproduced as found.</figcaption>
+              <figcaption><span class="doc-tag scan">Scan of the original</span>The John Reed homestead on Jackson Hill, Stoddard, drawn by hand in 1976 for Arlene Rasmussen's history of the property: the L-shaped cellar hole, the chimney bricks, the barn foundation across the old dirt road, and the apple trees the family planted. One of the family's own Stoddard documents, reproduced as found.</figcaption>
             </figure>
           </div>
         </header>
@@ -615,34 +621,34 @@
         <!-- ================= THE COLONIAL GENERATIONS, IN THE RECORDS ================= -->
         <section id="colonial-records">
           <h2>The colonial generations, in the records</h2>
-          <p class="section-intro">The paper behind the top of the line: the Rowlandson passage that names Thomas Read in captivity, the Falls Fight roster that places him among Captain Turner's men, and the pensioner census that puts Elnathan Read at Cavendish, Vermont at the end of his life. After the documents come the confirmation of the Isaiah to John link, and the two claims this site keeps flagged as disputed.</p>
+          <p class="section-intro">The paper behind the top of the line: the Rowlandson passage that names Thomas Read in captivity, the Falls Fight roster that places him among Captain Turner's men, and the pensioner census that puts Elnathan Read at Cavendish, Vermont at the end of his life. After the documents come the confirmation of the Isaiah to John link, and the two claims this site keeps flagged as disputed. Each document image is labeled as what it is: a <strong>scan of the original</strong> page, or a <strong>transcription</strong>, where the source's verified wording is set out as text rather than photographed from the original page.</p>
 <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/rowlandson-thirteenth-remove.png" alt="The Thirteenth Remove from Mary Rowlandson's Narrative of the Captivity and Restoration, 1682, with the passage naming Thomas Read as a captive brought from Hadley" width="1700" height="2200" loading="lazy" />
               <span class="shot-hint">Tap to view the page full size</span>
             </button>
-            <figcaption>Mary Rowlandson, A Narrative of the Captivity and Restoration of Mrs. Mary Rowlandson (1682), the Thirteenth Remove: "About this time they came yelping from Hadley, where they had killed three Englishmen, and brought one captive with them, viz. Thomas Read." The only mention of Thomas in the narrative, and firsthand evidence of his captivity in the spring of 1676.</figcaption>
+            <figcaption><span class="doc-tag transcript">Transcription &middot; not a scan</span>Mary Rowlandson, A Narrative of the Captivity and Restoration of Mrs. Mary Rowlandson (1682), the Thirteenth Remove: "About this time they came yelping from Hadley, where they had killed three Englishmen, and brought one captive with them, viz. Thomas Read." The only mention of Thomas in the narrative, and firsthand evidence of his captivity in the spring of 1676. This image is a transcription: the wording is the verified text of the 1682 narrative, set out as text, not a photograph of an original page.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/bodge-falls-fight-p250.jpg" alt="Page 250 of Bodge's Soldiers in King Philip's War, opening the list of the soldiers in the Fall Fight under Captain William Turner, approved by the Committee of the General Court in June 1736" width="1930" height="3283" loading="lazy" />
               <span class="shot-hint">Tap to view the book page full size</span>
             </button>
-            <figcaption>George Madison Bodge, Soldiers in King Philip's War (Boston, 1906), p. 250: the opening of "A List of ye Soldiers yt were in ye Fall Fight under Capt. Wm Turner, approved off by ye Committee of ye Gen. Court. (Dated June, 1736.)"</figcaption>
+            <figcaption><span class="doc-tag scan">Scan of the original</span>George Madison Bodge, Soldiers in King Philip's War (Boston, 1906), p. 250: the opening of "A List of ye Soldiers yt were in ye Fall Fight under Capt. Wm Turner, approved off by ye Committee of ye Gen. Court. (Dated June, 1736.)"</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/bodge-falls-fight-p251.jpg" alt="Page 251 of Bodge's Soldiers in King Philip's War, headed List of Turner's Men, with the entry 'Read, Thomas, Westford' in the right-hand column" width="1930" height="3283" loading="lazy" />
               <span class="shot-hint">Tap to view the book page full size</span>
             </button>
-            <figcaption>Bodge, Soldiers in King Philip's War, p. 251: the list continues, and in the right-hand column stands "Read, Thomas, Westford." The published roster that places Thomas Read among Captain Turner's men at the Falls Fight, May 19, 1676.</figcaption>
+            <figcaption><span class="doc-tag scan">Scan of the original</span>Bodge, Soldiers in King Philip's War, p. 251: the list continues, and in the right-hand column stands "Read, Thomas, Westford." The published roster that places Thomas Read among Captain Turner's men at the Falls Fight, May 19, 1676.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/pensioner-1840-elnathan.png" alt="Extract from the 1840 Census of Pensioners for Windsor County, Vermont, town of Cavendish, with the row for Elnathan Reed, age 85, highlighted" width="1700" height="1400" loading="lazy" />
               <span class="shot-hint">Tap to view the record full size</span>
             </button>
-            <figcaption>The 1840 Census of Pensioners for Revolutionary or Military Services, Windsor County, Vermont, town of Cavendish: "Elnathan Reed, 85," listed as head of his own family. A federal record from Elnathan's own lifetime, placing Isaiah's older brother at Cavendish drawing a Revolutionary pension in 1840.</figcaption>
+            <figcaption><span class="doc-tag transcript">Transcription &middot; not a scan</span>The 1840 Census of Pensioners for Revolutionary or Military Services, Windsor County, Vermont, town of Cavendish: "Elnathan Reed, 85," listed as head of his own family. A federal record from Elnathan's own lifetime, placing Isaiah's older brother at Cavendish drawing a Revolutionary pension in 1840. This image is a transcription: the entry's verified text, set out as a table, not a photograph of the original census page.</figcaption>
           </figure>
 
           <div class="callout neutral">
@@ -833,41 +839,41 @@
         <!-- ================= THE SOLDIERS: DOCUMENTS ================= -->
         <section id="soldier-documents">
           <h2>The documents behind the service records</h2>
-          <p class="section-intro">The paper each entry above rests on: the narrative passage that names Thomas Read in captivity, the Falls Fight roster that places him among Turner's men, the federal pensioner census that closes Elnathan's service, and the Prescott genealogy's one-line summary of that service. Tap any image to read it full size.</p>
+          <p class="section-intro">The paper each entry above rests on: the narrative passage that names Thomas Read in captivity, the Falls Fight roster that places him among Turner's men, the federal pensioner census that closes Elnathan's service, and the Prescott genealogy's one-line summary of that service. Tap any image to read it full size. Each image is labeled as what it is: a <strong>scan of the original</strong> page, or a <strong>transcription</strong>, where the source's verified wording is set out as text rather than photographed from the original page. The Rowlandson passage and the pensioner census are the two transcriptions here; the Bodge roster pages and the Prescott Memorial page are scans.</p>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/rowlandson-thirteenth-remove.png" alt="The Thirteenth Remove from Mary Rowlandson's Narrative of the Captivity and Restoration, 1682, with the passage naming Thomas Read as a captive brought from Hadley" width="1700" height="2200" loading="lazy" />
               <span class="shot-hint">Tap to view the page full size</span>
             </button>
-            <figcaption>Mary Rowlandson, A Narrative of the Captivity and Restoration of Mrs. Mary Rowlandson (1682), the Thirteenth Remove: "About this time they came yelping from Hadley, where they had killed three Englishmen, and brought one captive with them, viz. Thomas Read." Firsthand evidence of Thomas Read's captivity in the spring of 1676, before his escape of May 15.</figcaption>
+            <figcaption><span class="doc-tag transcript">Transcription &middot; not a scan</span>Mary Rowlandson, A Narrative of the Captivity and Restoration of Mrs. Mary Rowlandson (1682), the Thirteenth Remove: "About this time they came yelping from Hadley, where they had killed three Englishmen, and brought one captive with them, viz. Thomas Read." Firsthand evidence of Thomas Read's captivity in the spring of 1676, before his escape of May 15. This image is a transcription: the wording is the verified text of the 1682 narrative, set out as text, not a photograph of an original page.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/bodge-falls-fight-p250.jpg" alt="Page 250 of Bodge's Soldiers in King Philip's War, opening the list of the soldiers in the Fall Fight under Captain William Turner, approved by the Committee of the General Court in June 1736" width="1930" height="3283" loading="lazy" />
               <span class="shot-hint">Tap to view the book page full size</span>
             </button>
-            <figcaption>George Madison Bodge, Soldiers in King Philip's War (Boston, 1906), p. 250: the opening of "A List of ye Soldiers yt were in ye Fall Fight under Capt. Wm Turner, approved off by ye Committee of ye Gen. Court. (Dated June, 1736.)" The roster behind Thomas Read's battle entry.</figcaption>
+            <figcaption><span class="doc-tag scan">Scan of the original</span>George Madison Bodge, Soldiers in King Philip's War (Boston, 1906), p. 250: the opening of "A List of ye Soldiers yt were in ye Fall Fight under Capt. Wm Turner, approved off by ye Committee of ye Gen. Court. (Dated June, 1736.)" The roster behind Thomas Read's battle entry.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/bodge-falls-fight-p251.jpg" alt="Page 251 of Bodge's Soldiers in King Philip's War, headed List of Turner's Men, with the entry 'Read, Thomas, Westford' in the right-hand column" width="1930" height="3283" loading="lazy" />
               <span class="shot-hint">Tap to view the book page full size</span>
             </button>
-            <figcaption>Bodge, Soldiers in King Philip's War, p. 251: the list continues, and in the right-hand column stands "Read, Thomas, Westford." The published roster placing Thomas Read among Captain Turner's men at the Falls Fight, May 19, 1676.</figcaption>
+            <figcaption><span class="doc-tag scan">Scan of the original</span>Bodge, Soldiers in King Philip's War, p. 251: the list continues, and in the right-hand column stands "Read, Thomas, Westford." The published roster placing Thomas Read among Captain Turner's men at the Falls Fight, May 19, 1676.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/pensioner-1840-elnathan.png" alt="Extract from the 1840 Census of Pensioners for Windsor County, Vermont, town of Cavendish, with the row for Elnathan Reed, age 85, highlighted" width="1700" height="1400" loading="lazy" />
               <span class="shot-hint">Tap to view the record full size</span>
             </button>
-            <figcaption>The 1840 Census of Pensioners for Revolutionary or Military Services, Windsor County, Vermont, town of Cavendish: "Elnathan Reed, 85," listed as head of his own family. The federal record closing Elnathan Read's service: a Revolutionary pensioner at Cavendish some sixty years after his discharge in May 1780.</figcaption>
+            <figcaption><span class="doc-tag transcript">Transcription &middot; not a scan</span>The 1840 Census of Pensioners for Revolutionary or Military Services, Windsor County, Vermont, town of Cavendish: "Elnathan Reed, 85," listed as head of his own family. The federal record closing Elnathan Read's service: a Revolutionary pensioner at Cavendish some sixty years after his discharge in May 1780. This image is a transcription: the entry's verified text, set out as a table, not a photograph of the original census page.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/prescott-entry-603.jpg" alt="Page from the Prescott Memorial genealogy, headed 'Sixth Generation, Section III', with entry 603 at the foot: Annie Prescott, born May 7, 1761, married Elnathan Reed of Westford, Massachusetts" width="731" height="1292" loading="lazy" />
               <span class="shot-hint">Tap to view the book page full size</span>
             </button>
-            <figcaption>The Prescott Memorial, entry 603, under the issue of Timothy Prescott and Lydia Fletcher, on Annie Prescott's marriage to Elnathan Reed: "He served in the 'Continental Army' (as the patriotic army was then called) throughout the Revolution." The genealogy's service note for Elnathan, matching the Massachusetts roster's record of his 1777 to 1780 enlistment.</figcaption>
+            <figcaption><span class="doc-tag scan">Scan of the original</span>The Prescott Memorial, entry 603, under the issue of Timothy Prescott and Lydia Fletcher, on Annie Prescott's marriage to Elnathan Reed: "He served in the 'Continental Army' (as the patriotic army was then called) throughout the Revolution." The genealogy's service note for Elnathan, matching the Massachusetts roster's record of his 1777 to 1780 enlistment.</figcaption>
           </figure>
           <div class="prose">
             <p>The Revolutionary service details themselves, enlistment dates, units and terms, come from <strong>Massachusetts Soldiers and Sailors of the Revolutionary War</strong>, the official roster compiled from the Massachusetts archives, listed in full on the <a href="#sources">Documents page</a>.</p>
@@ -922,21 +928,21 @@
               <img src="assets/prescott-entry-603.jpg" alt="Page from the Prescott Memorial genealogy, headed 'Sixth Generation, Section III', with entry 603 at the foot: Annie Prescott, born May 7, 1761, married Elnathan Reed of Westford, Massachusetts" width="731" height="1292" loading="lazy" />
               <span class="shot-hint">Tap to view the book page full size</span>
             </button>
-            <figcaption>The Prescott Memorial, entry 603, under the issue of Timothy Prescott and Lydia Fletcher: "Annie, b. May 7, 1761; m. Elnathan Reed of Westford, Mass., settled in Stoddard, N. H., b. Oct. 12, 1758. He served in the 'Continental Army' (as the patriotic army was then called) throughout the Revolution. He d. July 25, 1845, a. 82 yrs. 8 mos. and 13 days. She d. Dec. 6, 1821, a. 60 yrs. 7 mos."</figcaption>
+            <figcaption><span class="doc-tag scan">Scan of the original</span>The Prescott Memorial, entry 603, under the issue of Timothy Prescott and Lydia Fletcher: "Annie, b. May 7, 1761; m. Elnathan Reed of Westford, Mass., settled in Stoddard, N. H., b. Oct. 12, 1758. He served in the 'Continental Army' (as the patriotic army was then called) throughout the Revolution. He d. July 25, 1845, a. 82 yrs. 8 mos. and 13 days. She d. Dec. 6, 1821, a. 60 yrs. 7 mos."</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/prescott-children-1077.jpg" alt="Page from the Prescott Memorial genealogy, headed 'Seventh Generation, Section III', listing the issue of Annie Prescott and Elnathan Reed of Stoddard, New Hampshire as entries 1077 to 1082" width="731" height="1292" loading="lazy" />
               <span class="shot-hint">Tap to view the book page full size</span>
             </button>
-            <figcaption>The Prescott Memorial, entries 1077 to 1082: the issue of Annie Prescott and Elnathan Reed of Stoddard, New Hampshire. Six children: Annie (b. June 16, 1783), Lydia (b. 1784), Mary (b. 1786), Ruth (b. Oct. 1788), Sarah P. (b. June 3, 1790) and Phebe (b. April 23, 1792).</figcaption>
+            <figcaption><span class="doc-tag scan">Scan of the original</span>The Prescott Memorial, entries 1077 to 1082: the issue of Annie Prescott and Elnathan Reed of Stoddard, New Hampshire. Six children: Annie (b. June 16, 1783), Lydia (b. 1784), Mary (b. 1786), Ruth (b. Oct. 1788), Sarah P. (b. June 3, 1790) and Phebe (b. April 23, 1792).</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/pensioner-1840-elnathan.png" alt="Extract from the 1840 Census of Pensioners for Windsor County, Vermont, town of Cavendish, with the row for Elnathan Reed, age 85, highlighted" width="1700" height="1400" loading="lazy" />
               <span class="shot-hint">Tap to view the record full size</span>
             </button>
-            <figcaption>The 1840 Census of Pensioners for Revolutionary or Military Services, Windsor County, Vermont, town of Cavendish: "Elnathan Reed, 85," head of his own family. The federal record that places Elnathan at Cavendish at the end of his life, behind the card below.</figcaption>
+            <figcaption><span class="doc-tag transcript">Transcription &middot; not a scan</span>The 1840 Census of Pensioners for Revolutionary or Military Services, Windsor County, Vermont, town of Cavendish: "Elnathan Reed, 85," head of his own family. The federal record that places Elnathan at Cavendish at the end of his life, behind the card below. This image is a transcription: the entry's verified text, set out as a table, not a photograph of the original census page.</figcaption>
           </figure>
 
           <div class="cards" style="margin-top: 26px;">
@@ -980,7 +986,7 @@
           <div class="prose">
             <p>Everything this site claims rests on paper, and this page gathers the paper in one place: the documents the family actually holds, the key extracts quoted from them, and every source used or cited anywhere on the site.</p>
             <p>The family's papers hold two sets of Stoddard documents. The first is Arlene Rasmussen's deed-by-deed history, <strong>"The John Reed Homestead,"</strong> which traces the Jackson Hill farm from John's 1842 purchase forward and names his father outright. The second is the Historical Society of Cheshire County's <strong>Reed file</strong>, a 134-page research packet the Society compiled in 2015 from what one Reed family had gathered on the Stoddard Reeds: register pages, handwritten vital-records extracts, a descendant chart, and notes from the town's own records.</p>
-            <p>Read together, the two sets confirm the link the line stands on: John Reed was Isaiah Reed's son, and from John the line runs confirmed back to Capt. Joseph Read. The proofs are set out below, with the documents reproduced as found: the two Stoddard papers first, then the two pages from the published Prescott genealogy that carry Anne Prescott's marriage and her children, then the military records: the Rowlandson passage that names Thomas Read in captivity, Bodge's Falls Fight roster, and the 1840 pensioner census entry for Elnathan. Tap any image to read it full size.</p>
+            <p>Read together, the two sets confirm the link the line stands on: John Reed was Isaiah Reed's son, and from John the line runs confirmed back to Capt. Joseph Read. The proofs are set out below, with the documents reproduced as found: the two Stoddard papers first, then the two pages from the published Prescott genealogy that carry Anne Prescott's marriage and her children, then the military records: the Rowlandson passage that names Thomas Read in captivity, Bodge's Falls Fight roster, and the 1840 pensioner census entry for Elnathan. Tap any image to read it full size. Each image is labeled as what it is: a <strong>scan of the original</strong> page, or a <strong>transcription</strong>, where the source's verified wording is set out as text rather than photographed from the original page. The Rowlandson passage and the 1840 pensioner census are transcriptions; everything else on this page is a scan of the original.</p>
           </div>
 
           <figure class="framed doc-figure">
@@ -988,56 +994,56 @@
               <img src="assets/homestead-diagram.jpg" alt="Hand-drawn 1976 diagram of the John Reed homestead site on Jackson Hill, Stoddard, showing the old cellar hole with its dimensions, the chimney bricks, the front door location, the old dirt road, a possible well and outhouse, the barn foundation and apple trees" width="993" height="1400" loading="lazy" />
               <span class="shot-hint">Tap to view the drawing full size</span>
             </button>
-            <figcaption>From "The John Reed Homestead": Rasmussen's hand-drawn 1976 survey of the Jackson Hill site, cellar hole, chimney bricks, barn foundation and apple trees marked as she found them.</figcaption>
+            <figcaption><span class="doc-tag scan">Scan of the original</span>From "The John Reed Homestead": Rasmussen's hand-drawn 1976 survey of the Jackson Hill site, cellar hole, chimney bricks, barn foundation and apple trees marked as she found them.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/william-birth-register.jpg" alt="Page from Stoddard's vital statistics for 1892, headed 'Births registered in the town of Stoddard, N.H.', with the row for Oct 27: Willie Reed, ninth child of James E Reed and Abby E Wells" width="1480" height="840" loading="lazy" />
               <span class="shot-hint">Tap to view the register page full size</span>
             </button>
-            <figcaption>An actual page from the record: Stoddard's vital statistics, births registered for the year ending December 31, 1892. The third row reads "Oct 27, Stoddard, Willie Reed," ninth child of James E. Reed, farmer, aged 47, and Abby E. Wells, aged 38. From the Society's Reed file.</figcaption>
+            <figcaption><span class="doc-tag scan">Scan of the original</span>An actual page from the record: Stoddard's vital statistics, births registered for the year ending December 31, 1892. The third row reads "Oct 27, Stoddard, Willie Reed," ninth child of James E. Reed, farmer, aged 47, and Abby E. Wells, aged 38. From the Society's Reed file.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/prescott-entry-603.jpg" alt="Page from the Prescott Memorial genealogy, headed 'Sixth Generation, Section III', with entry 603 at the foot: Annie Prescott, born May 7, 1761, married Elnathan Reed of Westford, Massachusetts" width="731" height="1292" loading="lazy" />
               <span class="shot-hint">Tap to view the book page full size</span>
             </button>
-            <figcaption>From the published Prescott genealogy, the Prescott Memorial: entry 603, under the issue of Timothy Prescott and Lydia Fletcher. "Annie, b. May 7, 1761; m. Elnathan Reed of Westford, Mass., settled in Stoddard, N. H., b. Oct. 12, 1758. He served in the 'Continental Army' (as the patriotic army was then called) throughout the Revolution. He d. July 25, 1845, a. 82 yrs. 8 mos. and 13 days. She d. Dec. 6, 1821, a. 60 yrs. 7 mos." The page behind the Prescott line and Anne's marriage on <a href="#prescotts">the Prescotts page</a>.</figcaption>
+            <figcaption><span class="doc-tag scan">Scan of the original</span>From the published Prescott genealogy, the Prescott Memorial: entry 603, under the issue of Timothy Prescott and Lydia Fletcher. "Annie, b. May 7, 1761; m. Elnathan Reed of Westford, Mass., settled in Stoddard, N. H., b. Oct. 12, 1758. He served in the 'Continental Army' (as the patriotic army was then called) throughout the Revolution. He d. July 25, 1845, a. 82 yrs. 8 mos. and 13 days. She d. Dec. 6, 1821, a. 60 yrs. 7 mos." The page behind the Prescott line and Anne's marriage on <a href="#prescotts">the Prescotts page</a>.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/prescott-children-1077.jpg" alt="Page from the Prescott Memorial genealogy, headed 'Seventh Generation, Section III', listing the issue of Annie Prescott and Elnathan Reed of Stoddard, New Hampshire as entries 1077 to 1082" width="731" height="1292" loading="lazy" />
               <span class="shot-hint">Tap to view the book page full size</span>
             </button>
-            <figcaption>The Prescott Memorial, entries 1077 to 1082: the issue of Annie Prescott and Elnathan Reed of Stoddard, New Hampshire. Six children: Annie (b. June 16, 1783), Lydia (b. 1784), Mary (b. 1786), Ruth (b. Oct. 1788), Sarah P. (b. June 3, 1790) and Phebe (b. April 23, 1792). This is the list that disagrees with the family tree's two children, flagged as open on the Prescotts page.</figcaption>
+            <figcaption><span class="doc-tag scan">Scan of the original</span>The Prescott Memorial, entries 1077 to 1082: the issue of Annie Prescott and Elnathan Reed of Stoddard, New Hampshire. Six children: Annie (b. June 16, 1783), Lydia (b. 1784), Mary (b. 1786), Ruth (b. Oct. 1788), Sarah P. (b. June 3, 1790) and Phebe (b. April 23, 1792). This is the list that disagrees with the family tree's two children, flagged as open on the Prescotts page.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/rowlandson-thirteenth-remove.png" alt="The Thirteenth Remove from Mary Rowlandson's Narrative of the Captivity and Restoration, 1682, with the passage naming Thomas Read as a captive brought from Hadley" width="1700" height="2200" loading="lazy" />
               <span class="shot-hint">Tap to view the page full size</span>
             </button>
-            <figcaption>From Mary Rowlandson's Narrative of the Captivity and Restoration (1682), the Thirteenth Remove, the passage that names Thomas Read: "brought one captive with them, viz. Thomas Read." Rowlandson spoke with him in the camps, and he told her he had seen her husband alive in Boston. Firsthand evidence of Thomas's captivity, behind the account on <a href="#documented">the Family line page</a>.</figcaption>
+            <figcaption><span class="doc-tag transcript">Transcription &middot; not a scan</span>From Mary Rowlandson's Narrative of the Captivity and Restoration (1682), the Thirteenth Remove, the passage that names Thomas Read: "brought one captive with them, viz. Thomas Read." Rowlandson spoke with him in the camps, and he told her he had seen her husband alive in Boston. Firsthand evidence of Thomas's captivity, behind the account on <a href="#documented">the Family line page</a>. This image is a transcription: the wording is the verified text of the 1682 narrative, set out as text, not a photograph of an original page.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/bodge-falls-fight-p250.jpg" alt="Page 250 of Bodge's Soldiers in King Philip's War, opening the list of the soldiers in the Fall Fight under Captain William Turner, approved by the Committee of the General Court in June 1736" width="1930" height="3283" loading="lazy" />
               <span class="shot-hint">Tap to view the book page full size</span>
             </button>
-            <figcaption>George Madison Bodge, Soldiers in King Philip's War (Boston, 1906), p. 250. The page opens "A List of ye Soldiers yt were in ye Fall Fight under Capt. Wm Turner," approved by the Committee of the General Court in June 1736: the township-grant roster behind The Reade Record's Falls Fight claim.</figcaption>
+            <figcaption><span class="doc-tag scan">Scan of the original</span>George Madison Bodge, Soldiers in King Philip's War (Boston, 1906), p. 250. The page opens "A List of ye Soldiers yt were in ye Fall Fight under Capt. Wm Turner," approved by the Committee of the General Court in June 1736: the township-grant roster behind The Reade Record's Falls Fight claim.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/bodge-falls-fight-p251.jpg" alt="Page 251 of Bodge's Soldiers in King Philip's War, headed List of Turner's Men, with the entry 'Read, Thomas, Westford' in the right-hand column" width="1930" height="3283" loading="lazy" />
               <span class="shot-hint">Tap to view the book page full size</span>
             </button>
-            <figcaption>Bodge, p. 251: the list continues, with "Read, Thomas, Westford" in the right-hand column, followed by the committee's endorsement. The published roster placing Thomas Read among Captain Turner's men at the Falls Fight, May 19, 1676.</figcaption>
+            <figcaption><span class="doc-tag scan">Scan of the original</span>Bodge, p. 251: the list continues, with "Read, Thomas, Westford" in the right-hand column, followed by the committee's endorsement. The published roster placing Thomas Read among Captain Turner's men at the Falls Fight, May 19, 1676.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/pensioner-1840-elnathan.png" alt="Extract from the 1840 Census of Pensioners for Windsor County, Vermont, town of Cavendish, with the row for Elnathan Reed, age 85, highlighted" width="1700" height="1400" loading="lazy" />
               <span class="shot-hint">Tap to view the record full size</span>
             </button>
-            <figcaption>The 1840 Census of Pensioners, Windsor County, Vermont, town of Cavendish: "Elnathan Reed, 85," head of his own family. The federal record behind Elnathan's place on <a href="#prescotts">the Prescotts page</a>: it proves him alive at Cavendish in 1840, whichever of the two death years, 1841 or 1845, is right.</figcaption>
+            <figcaption><span class="doc-tag transcript">Transcription &middot; not a scan</span>The 1840 Census of Pensioners, Windsor County, Vermont, town of Cavendish: "Elnathan Reed, 85," head of his own family. The federal record behind Elnathan's place on <a href="#prescotts">the Prescotts page</a>: it proves him alive at Cavendish in 1840, whichever of the two death years, 1841 or 1845, is right. This image is a transcription: the entry's verified text, set out as a table, not a photograph of the original census page.</figcaption>
           </figure>
 
           <div class="cards">
