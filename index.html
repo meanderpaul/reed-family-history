@@ -257,6 +257,37 @@
       footer { margin-top: 48px; border-top: 1px solid var(--line); padding: 22px 0 40px; font-size: 0.9rem; color: var(--ink-soft); }
       footer p { margin: 0 0 8px; max-width: 46rem; }
 
+      /* ---------- Clickable names + person card dialog ---------- */
+      .lineage .name-btn {
+        background: none; border: none; padding: 0; color: inherit;
+        cursor: pointer; text-align: left;
+      }
+      .lineage .name-btn:hover { text-decoration: underline; text-underline-offset: 3px; }
+      .lineage .name-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      button.tnode { font: inherit; color: inherit; cursor: pointer; }
+      button.tnode:hover { border-color: var(--accent); }
+      button.tnode:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      /* With JS, the card store is hidden: cards open one at a time in the dialog. */
+      .cards-dialog #people { display: none; }
+      .person-dialog {
+        position: fixed; inset: 0; z-index: 60; background: rgba(10, 10, 8, 0.66);
+        display: none; overflow-y: auto; padding: 22px 16px;
+      }
+      .person-dialog.on { display: flex; }
+      .person-box {
+        position: relative; margin: auto; width: 100%; max-width: 680px;
+        background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+        box-shadow: var(--shadow); padding: 30px 30px 26px;
+      }
+      .person-box .card { border: none; box-shadow: none; background: transparent; padding: 0; border-radius: 0; }
+      .person-close {
+        position: absolute; top: 10px; right: 12px; width: 40px; height: 40px;
+        border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
+        color: var(--ink); font-size: 1.25rem; line-height: 1; cursor: pointer;
+      }
+      .person-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      @media (max-width: 719px) { .person-box { padding: 26px 20px 20px; } }
+
       /* ---------- Lightbox ---------- */
       .lightbox {
         position: fixed; inset: 0; background: rgba(10, 10, 8, 0.92); z-index: 50;
@@ -285,7 +316,6 @@
         <div class="tabs" id="pageTabs" role="tablist">
           <button type="button" role="tab" id="tab-story" aria-controls="panel-story" aria-selected="true" data-panel="story">The story</button>
           <button type="button" role="tab" id="tab-family" aria-controls="panel-family" aria-selected="false" data-panel="family">The family line</button>
-          <button type="button" role="tab" id="tab-colonial" aria-controls="panel-colonial" aria-selected="false" data-panel="colonial">The colonial line</button>
           <button type="button" role="tab" id="tab-prescott" aria-controls="panel-prescott" aria-selected="false" data-panel="prescott">The Prescotts</button>
           <button type="button" role="tab" id="tab-documents" aria-controls="panel-documents" aria-selected="false" data-panel="documents">Documents</button>
           <button type="button" role="tab" id="tab-other" aria-controls="panel-other" aria-selected="false" data-panel="other">The other Reeds</button>
@@ -373,52 +403,62 @@
 
         <!-- ================= DOCUMENTED LINE ================= -->
         <section id="documented">
-          <h2>The documented line</h2>
-          <p class="section-intro">This is the line the family stands on, set out generation by generation in register style: nine generations from <strong>Capt. Joseph Read of Westford</strong> to the present, generations III to XI of the full eleven-generation line that begins with Thomas Read on the Colonial line page. The line is confirmed from John Reed of Stoddard back to Capt. Joseph: Westford's vital records carry Joseph to Joshua to Isaiah, and the Stoddard documents name John as Isaiah's son. Dates for the Stoddard generations come from the family's working tree and its attached records. Later generations are living family, listed by name and relationship.</p>
+          <h2>One line, eleven generations</h2>
+          <p class="section-intro">One register for the whole line, set out generation by generation: eleven generations from <strong>Thomas Read</strong> of Chelmsford to the present day. The top two generations rest on the published genealogies and are marked as the research line; from <strong>Capt. Joseph Read</strong> down, the line is confirmed: Westford's vital records carry Joseph to Joshua to Isaiah, and the Stoddard documents name John as Isaiah's son. Dates for the Stoddard generations come from the family's working tree and its attached records. Later generations are living family, listed by name and relationship. <strong>Select any name in the line to open that person's card.</strong></p>
           <ol class="lineage">
             <li>
               <span class="node"></span>
-              <div class="who"><span class="gen">Gen. III</span><span class="name">Capt. Joseph Read</span><span class="dates">b. June 4, 1716</span><span class="place">Westford, Massachusetts</span><span class="chip doc">Documented</span></div>
-              <div class="kids">Married <b>Ruth Underwood</b> on May 30, 1737. Westford's vital records name Joseph and Ruth as the parents of <b>Joshua Read</b>. The line is confirmed from Joseph down to the present day; the step above him, to Thomas Jr., rests on the published genealogies and is set out on the Colonial line page.</div>
+              <div class="who"><span class="gen">Gen. I</span><button type="button" class="name name-btn" data-open-card="thomas-read">Thomas Read</button><span class="dates">c. 1656 – 1730/36</span><span class="place">Chelmsford, Massachusetts</span><span class="chip open">Research line</span></div>
+              <div class="kids">Married <b>Hannah Blanchard</b>. The King Philip's War captive who reached Hatfield on May 15, 1676. His parentage is the family's brick wall: no record found so far names his parents.</div>
             </li>
             <li>
               <span class="node"></span>
-              <div class="who"><span class="gen">Gen. IV</span><span class="name">Joshua Read</span><span class="dates">b. December 1, 1737</span><span class="place">Westford, Massachusetts</span><span class="chip doc">Documented</span></div>
-              <div class="kids">Westford's vital records name him as the son of <b>Joseph and Ruth</b>. Married <b>Mary Spaulding</b> on May 27, 1758. Answered the Lexington alarm on April 19, 1775, marching in Capt. Jonathan Minot's company. Father of <b>Isaiah Read</b>.</div>
+              <div class="who"><span class="gen">Gen. II</span><button type="button" class="name name-btn" data-open-card="thomas-read-jr">Thomas Read Jr.</button><span class="dates">c. 1687–1773</span><span class="place">Westford, Massachusetts</span><span class="chip open">Research line</span></div>
+              <div class="kids">Married <b>Sarah Fletcher</b> on March 14, 1709/10. Father of <b>Capt. Joseph Read</b>.</div>
             </li>
             <li>
               <span class="node"></span>
-              <div class="who"><span class="gen">Gen. V</span><span class="name">Isaiah Read</span><span class="dates">b. March 17, 1778</span><span class="place">Westford, then Stoddard, New Hampshire</span><span class="chip doc">Documented</span></div>
-              <div class="kids">Westford's vital records name him as the son of <b>Joshua and Mary</b>. Married <b>Lydia Procter</b> (1781–1857) at Westford on February 12, 1799, then moved to Stoddard, where his children were born. Father of <b>John Reed</b>: his will (Cheshire County Probate No. 427, 1868) names John among his children. His older brother <a href="#elnathan-read">Elnathan Read</a> married <a href="#anne-prescott">Anne Prescott</a>, whose family is traced on the Prescotts page.</div>
+              <div class="who"><span class="gen">Gen. III</span><button type="button" class="name name-btn" data-open-card="joseph-read">Capt. Joseph Read</button><span class="dates">b. June 4, 1716</span><span class="place">Westford, Massachusetts</span><span class="chip doc">Documented</span></div>
+              <div class="kids">Married <b>Ruth Underwood</b> on May 30, 1737. Westford's vital records name Joseph and Ruth as the parents of <b>Joshua Read</b>, and the line is confirmed from Joseph down to the present day. The step above him, to Thomas Jr., rests on the published genealogies.</div>
             </li>
             <li>
               <span class="node"></span>
-              <div class="who"><span class="gen">Gen. VI</span><span class="name">John Reed</span><span class="dates">b. February 28, 1817 – d. October 5, 1866</span><span class="place">Stoddard, New Hampshire</span><span class="chip doc">Documented</span></div>
+              <div class="who"><span class="gen">Gen. IV</span><button type="button" class="name name-btn" data-open-card="joshua-read">Joshua Read</button><span class="dates">b. December 1, 1737</span><span class="place">Westford, Massachusetts</span><span class="chip doc">Documented</span></div>
+              <div class="kids">Westford's vital records name him as the son of <b>Joseph and Ruth</b>. Married <b>Mary Spaulding</b> on May 27, 1758. Answered the Lexington alarm on April 19, 1775, marching in Capt. Jonathan Minot's company: militia service only, three days on the alarm, with no Continental enlistment. Father of <b>Isaiah Read</b>.</div>
+            </li>
+            <li>
+              <span class="node"></span>
+              <div class="who"><span class="gen">Gen. V</span><button type="button" class="name name-btn" data-open-card="isaiah-read">Isaiah Read</button><span class="dates">b. March 17, 1778</span><span class="place">Westford, then Stoddard, New Hampshire</span><span class="chip doc">Documented</span></div>
+              <div class="kids">Westford's vital records name him as the son of <b>Joshua and Mary</b> directly, with no generation in between. Married <b>Lydia Procter</b> (1781–1857) at Westford on February 12, 1799, then moved to Stoddard, where his children were born. Father of <b>John Reed</b>: his will (Cheshire County Probate No. 427, 1868) names John among his children. His older brothers included <a href="#elnathan-read" data-open-card="elnathan-read">Elnathan Read</a> (b. 1758), who married <a href="#anne-prescott">Anne Prescott</a>, whose family is traced on the Prescotts page, and <a href="#joshua-read-jr" data-open-card="joshua-read-jr">Joshua Read Jr.</a> (b. March 6, 1763), whom an early draft of this line placed as a possible father for Isaiah; the Westford records correct that.</div>
+            </li>
+            <li>
+              <span class="node"></span>
+              <div class="who"><span class="gen">Gen. VI</span><button type="button" class="name name-btn" data-open-card="john-reed">John Reed</button><span class="dates">b. February 28, 1817 – d. October 5, 1866</span><span class="place">Stoddard, New Hampshire</span><span class="chip doc">Documented</span></div>
               <div class="kids">Married <b>Harriet Wright</b> (1826–1907). Father of five sons: <b>James Edwin</b>, <b>Henry</b>, <b>Albert B.</b>, <b>Frank J.</b> and <b>Fred W. Reed</b>. Son of <b>Isaiah Reed</b> of Westford and Stoddard: the Stoddard documents say so outright, Isaiah's will names him, and a handwritten vital-records extract gives his parents as "Isaiah and Lydia Reed."</div>
             </li>
             <li>
               <span class="node"></span>
-              <div class="who"><span class="gen">Gen. VII</span><span class="name">James Edwin Reed</span><span class="dates">1846–1895</span><span class="place">born in Stoddard, New Hampshire</span><span class="chip doc">Documented</span></div>
+              <div class="who"><span class="gen">Gen. VII</span><button type="button" class="name name-btn" data-open-card="james-edwin-reed">James Edwin Reed</button><span class="dates">1846–1895</span><span class="place">born in Stoddard, New Hampshire</span><span class="chip doc">Documented</span></div>
               <div class="kids">Married first <b>Harriett Ruffle</b>, and second <b>Abby E. Wells</b> (b. 1854). Father of <b>William E. Reed</b>.</div>
             </li>
             <li>
               <span class="node"></span>
-              <div class="who"><span class="gen">Gen. VIII</span><span class="name">William Erving Reed</span><span class="dates">b. October 27, 1892 – 1957</span><span class="chip doc">Documented</span></div>
+              <div class="who"><span class="gen">Gen. VIII</span><button type="button" class="name name-btn" data-open-card="william-reed">William Erving Reed</button><span class="dates">b. October 27, 1892 – 1957</span><span class="chip doc">Documented</span></div>
               <div class="kids">Married <b>Charlotte Evelyn Jellow</b> (1889–1974) in 1914 at Braintree, Massachusetts. Father of <b>Arthur Reed</b>.</div>
             </li>
             <li>
               <span class="node"></span>
-              <div class="who"><span class="gen">Gen. IX</span><span class="name">Arthur Reed</span><span class="place">the grandfather</span><span class="chip doc">Documented</span></div>
+              <div class="who"><span class="gen">Gen. IX</span><button type="button" class="name name-btn" data-open-card="arthur-reed">Arthur Reed</button><span class="place">the grandfather</span><span class="chip doc">Documented</span></div>
               <div class="kids">Father of three sons: <b>Paul Reed</b>, <b>Arthur Reed</b> and <b>Mark Reed</b>.</div>
             </li>
             <li>
               <span class="node"></span>
-              <div class="who"><span class="gen">Gen. X</span><span class="name">Paul Reed</span><span class="place">son of Arthur</span><span class="chip doc">Documented</span></div>
+              <div class="who"><span class="gen">Gen. X</span><button type="button" class="name name-btn" data-open-card="paul-reed">Paul Reed</button><span class="place">son of Arthur</span><span class="chip doc">Documented</span></div>
               <div class="kids">Father of <b>Paul Reed II</b>. His brother <b>Mark Reed</b> is the father of <b>Dan Reed</b> and <b>Steven Reed</b>.</div>
             </li>
             <li>
               <span class="node"></span>
-              <div class="who"><span class="gen">Gen. XI</span><span class="name">Paul Reed II</span><span class="place">the present generation</span><span class="chip doc">Documented</span></div>
+              <div class="who"><span class="gen">Gen. XI</span><button type="button" class="name name-btn" data-open-card="paul-reed-ii">Paul Reed II</button><span class="place">the present generation</span><span class="chip doc">Documented</span></div>
               <div class="kids">Son of Paul Reed.</div>
             </li>
           </ol>
@@ -427,26 +467,26 @@
         <!-- ================= THE MODERN BRANCHES ================= -->
         <section id="branches">
           <h2>The modern branches</h2>
-          <p class="section-intro">From Arthur Reed down, the line forks, and a straight descent list stops telling the story. His three sons head three branches, and the chart below sets them out side by side: <strong>Paul Reed II</strong> on Paul's branch, and <strong>Dan Reed</strong> and <strong>Steven Reed</strong> on Mark's, the present generation given equal weight on each side.</p>
-          <div class="ftree" role="img" aria-label="Descendant chart: Arthur Reed, father of Paul, Arthur and Mark. Paul is the father of Paul Reed II. Mark is the father of Dan Reed and Steven Reed.">
+          <p class="section-intro">From Arthur Reed down, the line forks, and a straight descent list stops telling the story. His three sons head three branches, and the chart below sets them out side by side: <strong>Paul Reed II</strong> on Paul's branch, and <strong>Dan Reed</strong> and <strong>Steven Reed</strong> on Mark's, the present generation given equal weight on each side. Select any name to open that person's card.</p>
+          <div class="ftree" role="group" aria-label="Descendant chart: Arthur Reed, father of Paul, Arthur and Mark. Paul is the father of Paul Reed II. Mark is the father of Dan Reed and Steven Reed.">
             <ul>
               <li>
-                <div class="tnode"><span class="tname">Arthur Reed</span><span class="tsub">Generation IX · the grandfather</span></div>
+                <button type="button" data-open-card="arthur-reed" class="tnode"><span class="tname">Arthur Reed</span><span class="tsub">Generation IX · the grandfather</span></button>
                 <ul>
                   <li>
-                    <div class="tnode"><span class="tname">Paul Reed</span><span class="tsub">son of Arthur · Generation X</span></div>
+                    <button type="button" data-open-card="paul-reed" class="tnode"><span class="tname">Paul Reed</span><span class="tsub">son of Arthur · Generation X</span></button>
                     <ul>
-                      <li><div class="tnode now"><span class="tname">Paul Reed II</span><span class="tsub">Generation XI · son of Paul</span></div></li>
+                      <li><button type="button" data-open-card="paul-reed-ii" class="tnode now"><span class="tname">Paul Reed II</span><span class="tsub">Generation XI · son of Paul</span></button></li>
                     </ul>
                   </li>
                   <li>
-                    <div class="tnode"><span class="tname">Arthur Reed</span><span class="tsub">son of Arthur · Generation X</span></div>
+                    <button type="button" data-open-card="arthur-reed-uncle" class="tnode"><span class="tname">Arthur Reed</span><span class="tsub">son of Arthur · Generation X</span></button>
                   </li>
                   <li>
-                    <div class="tnode"><span class="tname">Mark Reed</span><span class="tsub">son of Arthur · Generation X</span></div>
+                    <button type="button" data-open-card="mark-reed" class="tnode"><span class="tname">Mark Reed</span><span class="tsub">son of Arthur · Generation X</span></button>
                     <ul>
-                      <li><div class="tnode now"><span class="tname">Dan Reed</span><span class="tsub">Generation XI · son of Mark</span></div></li>
-                      <li><div class="tnode"><span class="tname">Steven Reed</span><span class="tsub">son of Mark · Generation XI</span></div></li>
+                      <li><button type="button" data-open-card="dan-reed" class="tnode now"><span class="tname">Dan Reed</span><span class="tsub">Generation XI · son of Mark</span></button></li>
+                      <li><button type="button" data-open-card="steven-reed" class="tnode"><span class="tname">Steven Reed</span><span class="tsub">son of Mark · Generation XI</span></button></li>
                     </ul>
                   </li>
                 </ul>
@@ -458,135 +498,31 @@
         <!-- ================= THE PEOPLE ================= -->
         <section id="people">
           <h2>The people</h2>
-          <p class="section-intro">Brief notes on each Reed in the documented line, oldest first, with the spouses who married into the family.</p>
+          <p class="section-intro">Brief notes on each person in the line, oldest first, with the spouses who married into the family.</p>
           <div class="cards">
-            <article class="card">
-              <h3>John Reed</h3>
-              <div class="meta"><span class="dates">b. February 28, 1817 – d. October 5, 1866</span><span class="relation">3rd great-grandfather</span><span class="chip doc">Documented</span></div>
-              <p>The earliest Reed the family can stand behind without qualification. John farmed on Jackson Hill in Stoddard, New Hampshire: on March 8, 1842 he paid Peter Wright $2,000 for the homestead parcel, some 175 acres in lots 26, 27 and 28 of range 13, and the farm stayed in Reed hands for 58 years. He died of typhoid on October 5, 1866, aged 49 years, 7 months and 5 days, leaving no will. His estate inventory (Cheshire County Probate No. 414) values his livestock at $306.34: 13 oxen, one cow and 10 sheep, plus provisions, farming tools, furniture, and 85 sap buckets that suggest he made maple sugar to sell as well as to eat.</p>
-              <p>His parentage is no longer a lead. Arlene Rasmussen's deed-by-deed history of his homestead states it outright, twice: "John Reed's father, Isaiah Reed." Isaiah's will (Cheshire County Probate No. 427, 1868) left ten dollars each to Jonas, John, Nancy and his grandson Columbus, with the homestead going to son Edward, and the same history calls Jonas P. Reed "brother of John Reed," which fits, since Jonas is confirmed as Isaiah's son. Strongest of all, a handwritten vital-records extract in the Society's Reed file reads: "John Reed died 5 Oct 1866 from typhoid age 49 yrs. 7 mos 5 days. parents Isaiah and Lydia Reed." The file also lists John, born February 28, 1817, among Isaiah and Lydia's children in three separate notes. John had five sons himself: James Edwin (b. 1846), Henry (b. July 20, 1850), Frank J. (b. August 8, 1853), Albert B. and Fred W. Frank and Henry kept stores in Stoddard Center, and Albert bought the old homestead farm from his mother in 1890.</p>
-              <p class="spouse">Wife: <b>Harriet Wright</b> (1826–1907), daughter of Peter Wright (1791–1870) and Diadamia Waldron (1802–1850). One open question hangs over her name: a Stoddard town record says John married "Hannah, daughter of Peter H. and Diadama Wright," while every Reed family record calls her Harriet, and Peter and Diadamia's listed children include neither name. See the <a href="#documents">Documents page</a>. Her father deeded her the homestead land in 1852 "in consideration of the love and affection I bear to my daughter Harriet Reed, wife of John Reed." Widowed in 1866, she bought the farm back in 1869 and held it for two more decades, then remarried: James Simonds, in 1871.</p>
-            </article>
-            <article class="card">
-              <h3>James Edwin Reed</h3>
-              <div class="meta"><span class="dates">1846–1895</span><span class="relation">2nd great-grandfather</span><span class="chip doc">Documented</span></div>
-              <p>Born in Stoddard, New Hampshire in 1846, son of John and Harriet, and a farmer in Stoddard like his father. His profile in the family tree carries images of the records from his life, including a register page naming James E. Reed and Abby Wells of Stoddard, and census-style documents. The Society file's hand-drawn descendant chart gives James and Abby a big family: Alice (b. 1873), Rosabel (b. 1875), Lucy (b. 1878), Clara (b. 1880), Silvia (b. 1883), Walter (b. 1885), Grace (b. 1887), Arthur (b. 1889) and William (b. 1892), who was registered as their ninth child.</p>
-              <p class="spouse">Wives: James married first <b>Harriett Ruffle</b>. His second wife was <b>Abby E. Wells</b> (b. 1854), daughter of George Wells, and William's mother. After James's death in 1895 she remarried, to Charles Hastings.</p>
-            </article>
-            <article class="card">
-              <h3>William Erving Reed</h3>
-              <div class="meta"><span class="dates">b. October 27, 1892 – 1957</span><span class="relation">great-grandfather</span><span class="chip doc">Documented</span></div>
-              <p>Son of James Edwin and Abby, registered at birth as "Willie Reed." Stoddard's own vital statistics for 1892 record him plainly: born October 27 at Stoddard, the ninth child of James E. Reed, farmer, aged 47, and Abby E. Wells, aged 38, of Deering. A copy of that register page sits in the Society file, and it is reproduced on the <a href="#documents">Documents page</a>.</p>
-              <p>William carries the line out of the Stoddard generation and into the twentieth century. His 1942 draft registration card, filed as William Erving Reed, places him at 54 Station Street, Quincy, Massachusetts, born at Stoddard, with Charlotte named as the person who would always know his address. He is the father of Arthur Reed.</p>
-              <p class="spouse">Wife: <b>Charlotte Evelyn Jellow</b> (1889–1974), married in 1914 at Braintree, Massachusetts. The tree preserves an actual photograph of Charlotte, one of the only real faces among the early generations.</p>
-            </article>
-            <article class="card">
-              <h3>Arthur Reed</h3>
-              <div class="meta"><span class="relation">grandfather</span><span class="chip doc">Documented</span></div>
-              <p>Son of William E. Reed. Arthur is the grandfather of the present generation and the father of three sons, Paul, Arthur and Mark, through whom the modern branches of the family run.</p>
-              <p class="spouse">Wife: <b>Ethel Lois Gould</b>, the family's grandmother on this side, who married into the Reeds. Sons: <b>Paul Reed</b>, <b>Arthur Reed</b> and <b>Mark Reed</b>.</p>
-            </article>
-            <article class="card">
-              <h3>Paul Reed</h3>
-              <div class="meta"><span class="relation">father</span><span class="chip doc">Documented</span></div>
-              <p>Son of Arthur Reed, brother of Arthur and Mark. Father of Paul Reed II.</p>
-            </article>
-            <article class="card">
-              <h3>Arthur Reed</h3>
-              <div class="meta"><span class="relation">uncle</span><span class="chip doc">Documented</span></div>
-              <p>Son of Arthur Reed, named for his father. Brother of Paul and Mark.</p>
-            </article>
-            <article class="card">
-              <h3>Mark Reed</h3>
-              <div class="meta"><span class="relation">uncle</span><span class="chip doc">Documented</span></div>
-              <p>Son of Arthur Reed, brother of Paul and Arthur. Father of Dan and Steven.</p>
-              <p class="spouse">Sons: <b>Dan Reed</b> and <b>Steven Reed</b>.</p>
-            </article>
-            <article class="card">
-              <h3>Dan Reed</h3>
-              <div class="meta"><span class="relation">cousin, son of Mark</span><span class="chip doc">Documented</span></div>
-              <p>Son of Mark Reed, brother of Steven.</p>
-            </article>
-            <article class="card">
-              <h3>Steven Reed</h3>
-              <div class="meta"><span class="relation">cousin, son of Mark</span><span class="chip doc">Documented</span></div>
-              <p>Son of Mark Reed, brother of Dan.</p>
-            </article>
-            <article class="card">
-              <h3>Paul Reed II</h3>
-              <div class="meta"><span class="relation">the present day</span><span class="chip doc">Documented</span></div>
-              <p>Son of Paul Reed.</p>
-            </article>
-          </div>
-        </section>
-      </div>
-
-      <!-- ============================================================ -->
-      <!-- PAGE: THE COLONIAL LINE                                      -->
-      <!-- ============================================================ -->
-      <div class="panel" id="panel-colonial" data-panel="colonial" role="tabpanel" aria-labelledby="tab-colonial">
-
-        <!-- ================= RESEARCH LINE ================= -->
-        <section id="research">
-          <h2>The colonial line</h2>
-          <p class="section-intro">From Capt. Joseph Read down, this line is confirmed, and it runs as one line with the documented line on the Family line page: Westford's vital records confirm Joshua Read (b. 1737) as the son of Joseph and Ruth, and Isaiah (b. 1778) as the son of Joshua and Mary, and the Stoddard documents name John as Isaiah's son. Capt. Joseph himself counts as documented: his birth date and his marriage to Ruth Underwood are on the record, and Westford's vital records name him as Joshua's father. Above Joseph, the line is drawn from a 1915 published genealogy, the Reade Society's journal and town histories. What is still research rather than record: the step above Joseph, his parentage as Thomas Jr.'s son, and the step from Thomas Sr. to Thomas Jr., both of which rest on the published genealogies and the original records they cite, and Thomas Sr.'s parentage, which no record found so far gives at all.</p>
-          <ol class="lineage">
-            <li>
-              <span class="node"></span>
-              <div class="who"><span class="gen">Gen. I</span><span class="name">Thomas Read</span><span class="dates">c. 1656 – 1730/36</span><span class="place">Chelmsford, Massachusetts</span><span class="chip open">Research line</span></div>
-              <div class="kids">Married <b>Hannah Blanchard</b>. The King Philip's War captive who reached Hatfield on May 15, 1676.</div>
-            </li>
-            <li>
-              <span class="node"></span>
-              <div class="who"><span class="gen">Gen. II</span><span class="name">Thomas Read Jr.</span><span class="dates">c. 1687–1773</span><span class="place">Westford, Massachusetts</span><span class="chip open">Research line</span></div>
-              <div class="kids">Married <b>Sarah Fletcher</b> on March 14, 1709/10. Father of <b>Capt. Joseph Read</b>.</div>
-            </li>
-            <li>
-              <span class="node"></span>
-              <div class="who"><span class="gen">Gen. III</span><span class="name">Capt. Joseph Read</span><span class="dates">b. June 4, 1716</span><span class="place">Westford, Massachusetts</span><span class="chip doc">Documented</span></div>
-              <div class="kids">His dates and marriage are on the record: born June 4, 1716, married <b>Ruth Underwood</b> on May 30, 1737, and Westford's vital records name him as the father of <b>Joshua Read</b>. What stays a research line is the step above him: that he was Thomas Jr.'s son rests on the published genealogy, not yet on a primary record.</div>
-            </li>
-            <li>
-              <span class="node"></span>
-              <div class="who"><span class="gen">Gen. IV</span><span class="name">Joshua Read</span><span class="dates">b. December 1, 1737</span><span class="place">Westford, Massachusetts</span><span class="chip doc">Documented</span></div>
-              <div class="kids">Westford's vital records name him as the son of <b>Joseph and Ruth</b>. Married <b>Mary Spaulding</b> on May 27, 1758. Answered the Lexington alarm, April 19, 1775.</div>
-            </li>
-            <li>
-              <span class="node"></span>
-              <div class="who"><span class="gen">Gen. V</span><span class="name">Isaiah Read</span><span class="dates">b. March 17, 1778</span><span class="place">Westford, then Stoddard, New Hampshire</span><span class="chip doc">Documented</span></div>
-              <div class="kids">Westford's vital records name him as the son of <b>Joshua and Mary</b> directly, with no generation in between. His older brothers included <a href="#elnathan-read">Elnathan Read</a> (b. 1758) and <b>Joshua Read Jr.</b> (b. March 6, 1763), whom an early draft of this line placed as a possible father for Isaiah; the Westford records correct that. Married <b>Lydia Procter</b> (1781–1857) at Westford on February 12, 1799, then moved to Stoddard, where his children were born.</div>
-            </li>
-            <li>
-              <span class="node"></span>
-              <div class="who"><span class="gen">Gen. VI</span><span class="name">John Reed</span><span class="dates">1817–1866</span><span class="place">Stoddard, New Hampshire</span><span class="chip doc">Documented</span></div>
-              <div class="kids">Son of Isaiah and Lydia. The confirmed line runs through him in both directions: back to Capt. Joseph, and forward to the present day on the Family line page. The Stoddard documents name his parents outright. See <a href="#documents">the Documents page</a>.</div>
-            </li>
-          </ol>
-
-          <div class="cards" style="margin-top: 26px;">
-            <article class="card">
+            <article class="card" id="thomas-read">
               <h3>Thomas Read, the captive</h3>
               <div class="meta"><span class="dates">c. 1656 – 1730/36</span><span class="relation">a tailor of Chelmsford, Massachusetts</span></div>
               <p>Thomas was a soldier in King Philip's War and spent part of it as a captive. Mary Rowlandson met him in captivity and wrote about it in her narrative, published in 1682, only six years after the events: in the chapter called the Thirteenth Remove, she describes Thomas in tears, fearing he would be killed, and records that he told her he had recently seen her husband alive. It is rare, firsthand, near-contemporary evidence that Thomas was real and was there.</p>
               <p>On May 15, 1676, Thomas escaped and reached Hatfield, Massachusetts, carrying intelligence about the encampments near the falls of the Connecticut River. The Reverend John Russell described the escape in a letter dated that same day. Four days later, on May 19, Captain William Turner's force attacked the encampment at Peskeompskut, remembered as the Battle of Turner's Falls. Whether Thomas personally fought in the attack is a step beyond what the escape records alone show, but The Reade Record treats his presence at the Falls Fight as certain, citing the June 1736 township grant lists: "Thomas Read, Westford" appears on the approved list, and the claimants include "John Reed, Westford, son of Thomas Reed," an entry that is itself a primary father-and-son record. Thomas was made a freeman on April 1, 1679, settled at Chelmsford as a tailor, and married Hannah Blanchard around 1679. He died sometime between September 1730 and June 1736. One correction the records force: a death date of March 1727 appears in some trees, the family's Ancestry tree among them when it was checked in October 2026, but the deed of September 30, 1730 still styles his son "Thomas Read Junior," a styling that only holds while the father lives. Thomas was alive in 1730, so the 1727 date cannot stand.</p>
             </article>
-            <article class="card">
+            <article class="card" id="thomas-read-jr">
               <h3>Thomas Read Jr.</h3>
               <div class="meta"><span class="dates">c. 1687–1773</span><span class="relation">Westford, Massachusetts</span></div>
               <p>Son of Thomas and Hannah. Thomas Jr. married Sarah Fletcher on March 14, 1709/10 and became part of the community of Westford, where he died on December 24, 1773. The Reade Record points to two original records that anchor this generation in primary evidence: the Middlesex court proceeding of May 10, 1725 naming Thomas's sons as John, Thomas, William, Jonathan and Benjamin, and a deed dated September 30, 1730 that still calls him "Thomas Read Junior," showing his father was then living.</p>
             </article>
-            <article class="card">
+            <article class="card" id="joseph-read">
               <h3>Capt. Joseph Read</h3>
               <div class="meta"><span class="dates">b. June 4, 1716</span><span class="relation">Westford, Massachusetts</span><span class="chip doc">Documented</span></div>
               <p>Joseph is a documented person in his own right: the record gives his birth on June 4, 1716 and his marriage to Ruth Underwood on May 30, 1737, and Westford's vital records name Joseph and Ruth as the parents of Joshua, which anchors him in a primary source. The one link that is not yet proven by an original record is his parentage: that he was Thomas Jr.'s son comes from the genealogy and Westford Historical Society research, and it is that step, not Joseph himself, that stays on the research line. Joseph became a central figure in Westford's civic and political life in the Revolutionary period, with activity tied to the Massachusetts Provincial Congress. His political role is well regarded locally. One famous claim attached to him is not settled, and it is flagged below.</p>
             </article>
-            <article class="card">
+            <article class="card" id="joshua-read">
               <h3>Joshua Read</h3>
               <div class="meta"><span class="dates">b. December 1, 1737</span><span class="relation">Westford, Massachusetts</span></div>
               <p>Son of Joseph and Ruth: Westford's own vital records say so, which gives this link a primary source independent of the published genealogies and of the family's research. The same records, and the Westford Historical Society, document his marriage to Mary Spaulding on May 27, 1758. When the Lexington alarm came on April 19, 1775, Joshua marched in Captain Jonathan Minot's militia company, putting him among the Massachusetts men who mobilized on the first day of the Revolutionary War.</p>
               <p>His war service was militia only. The Massachusetts Soldiers and Sailors of the Revolutionary War roster lists him for three days' service on the April 19, 1775 alarm in Capt. Minot's company, and records no Continental enlistment for him.</p>
             </article>
-            <article class="card">
+            <article class="card" id="joshua-read-jr">
               <h3>Joshua Read Jr.</h3>
               <div class="meta"><span class="dates">b. March 6, 1763</span><span class="relation">Westford, Massachusetts · Isaiah's older brother</span></div>
               <p>Son of Joshua and Mary, per Westford's vital records, and the second generation of the family to serve in the Revolution. He enlisted at sixteen. The Massachusetts Soldiers and Sailors of the Revolutionary War roster records Continental service for him: nine months in 1779–1780 with Col. Jackson's 8th Massachusetts, followed by a six-month levy through the end of 1780. He matters to this page because an early draft of the line placed him as a possible extra generation between Joshua and Isaiah. The Westford records settle it: Isaiah, born in 1778, was Joshua and Mary's son too, fifteen years Joshua Jr.'s junior. He is a brother in the line, not a link in it.</p>
@@ -597,16 +533,79 @@
               <p>Son of Joshua Read and Mary Spaulding, and Isaiah's older brother: in Paul's family tree he stands as the present generation's 4th great-granduncle. Gould's <em>History of Stoddard</em> lists an Elnathan Reed among the Revolutionary soldiers who lived in Stoddard after the war, and on that listing alone this site once filed him with Stoddard's other, unrelated Reeds. The tree says otherwise: the soldier in Stoddard was one of ours, a Westford Read who came north ahead of his younger brother Isaiah. He married <a href="#anne-prescott">Anne Prescott</a> and died in 1841 at Cavendish, Vermont. Anne's own family, one of the founding families of Lancaster, Massachusetts, is traced on <a href="#prescotts">the Prescotts page</a>.</p>
               <p>His Revolutionary War service is set out in the Massachusetts Soldiers and Sailors of the Revolutionary War roster. He served in the militia in 1776, then took a full three-year Continental enlistment as a Private in Capt. Ballard's company, Col. Alden's Massachusetts regiment (afterwards the 7th Massachusetts), from May 1777 to May 1780. The roster places him at Cherry Valley, New York in 1779.</p>
             </article>
-            <article class="card">
+            <article class="card" id="isaiah-read">
               <h3>Isaiah Read</h3>
               <div class="meta"><span class="dates">b. March 17, 1778</span><span class="relation">Westford to Stoddard</span><span class="chip doc">Documented</span></div>
               <p>The bridge generation, and the strongest link in the line. Westford's own vital records give Isaiah's birth on March 17, 1778 to Joshua and Mary, and his marriage to Lydia Procter on February 12, 1799, so his place in the line rests on a primary source, not on the genealogies. Westford records no births for Isaiah and Lydia's children, which fits what happened next: the couple moved to Stoddard, New Hampshire right after the wedding, and the children were born there.</p>
               <p>FamilySearch's profile for Isaiah lists the seven children of Isaiah and Lydia: Lydia, Isaiah, Jonas P., Nancy, Cyrus, John and Edward. Gould's Stoddard history fills in the town years: Isaiah appears as "Isaiah Reed, Esq.," and in 1848 two dwelling houses, a wood house and a carriage house owned by Isaiah and his son burned. Gould's marriage lists catch two of the children, Jonas P. to Ann Waldron on October 20, 1831, and Nancy to Samuel Jenkins; the Society's Reed file adds that Nancy married a second time, which resolves records that seemed to conflict. Gould also records Isaiah's own second marriage, to Lucinda Dudley on August 12, after Lydia's death in 1857.</p>
               <p>Two late pieces of his story come from the Stoddard documents. His will (Cheshire County Probate No. 427, 1868) left ten dollars each to Jonas, John, Nancy and his grandson Columbus, and the homestead to Edward: the document that ties John to this household in Isaiah's own probate. And late in life Isaiah was excommunicated from Stoddard's Congregational church for slipping off to Universalist meetings, while his son Jonas P. sat as a deacon of the church that put him out. Isaiah died on March 13, 1868 and is buried in Joslin Cemetery, Stoddard.</p>
             </article>
+          
+            <article class="card" id="john-reed">
+              <h3>John Reed</h3>
+              <div class="meta"><span class="dates">b. February 28, 1817 – d. October 5, 1866</span><span class="relation">3rd great-grandfather</span><span class="chip doc">Documented</span></div>
+              <p>The earliest Reed the family can stand behind without qualification. John farmed on Jackson Hill in Stoddard, New Hampshire: on March 8, 1842 he paid Peter Wright $2,000 for the homestead parcel, some 175 acres in lots 26, 27 and 28 of range 13, and the farm stayed in Reed hands for 58 years. He died of typhoid on October 5, 1866, aged 49 years, 7 months and 5 days, leaving no will. His estate inventory (Cheshire County Probate No. 414) values his livestock at $306.34: 13 oxen, one cow and 10 sheep, plus provisions, farming tools, furniture, and 85 sap buckets that suggest he made maple sugar to sell as well as to eat.</p>
+              <p>His parentage is no longer a lead. Arlene Rasmussen's deed-by-deed history of his homestead states it outright, twice: "John Reed's father, Isaiah Reed." Isaiah's will (Cheshire County Probate No. 427, 1868) left ten dollars each to Jonas, John, Nancy and his grandson Columbus, with the homestead going to son Edward, and the same history calls Jonas P. Reed "brother of John Reed," which fits, since Jonas is confirmed as Isaiah's son. Strongest of all, a handwritten vital-records extract in the Society's Reed file reads: "John Reed died 5 Oct 1866 from typhoid age 49 yrs. 7 mos 5 days. parents Isaiah and Lydia Reed." The file also lists John, born February 28, 1817, among Isaiah and Lydia's children in three separate notes. John had five sons himself: James Edwin (b. 1846), Henry (b. July 20, 1850), Frank J. (b. August 8, 1853), Albert B. and Fred W. Frank and Henry kept stores in Stoddard Center, and Albert bought the old homestead farm from his mother in 1890.</p>
+              <p class="spouse">Wife: <b>Harriet Wright</b> (1826–1907), daughter of Peter Wright (1791–1870) and Diadamia Waldron (1802–1850). One open question hangs over her name: a Stoddard town record says John married "Hannah, daughter of Peter H. and Diadama Wright," while every Reed family record calls her Harriet, and Peter and Diadamia's listed children include neither name. See the <a href="#documents">Documents page</a>. Her father deeded her the homestead land in 1852 "in consideration of the love and affection I bear to my daughter Harriet Reed, wife of John Reed." Widowed in 1866, she bought the farm back in 1869 and held it for two more decades, then remarried: James Simonds, in 1871.</p>
+            </article>
+            <article class="card" id="james-edwin-reed">
+              <h3>James Edwin Reed</h3>
+              <div class="meta"><span class="dates">1846–1895</span><span class="relation">2nd great-grandfather</span><span class="chip doc">Documented</span></div>
+              <p>Born in Stoddard, New Hampshire in 1846, son of John and Harriet, and a farmer in Stoddard like his father. His profile in the family tree carries images of the records from his life, including a register page naming James E. Reed and Abby Wells of Stoddard, and census-style documents. The Society file's hand-drawn descendant chart gives James and Abby a big family: Alice (b. 1873), Rosabel (b. 1875), Lucy (b. 1878), Clara (b. 1880), Silvia (b. 1883), Walter (b. 1885), Grace (b. 1887), Arthur (b. 1889) and William (b. 1892), who was registered as their ninth child.</p>
+              <p class="spouse">Wives: James married first <b>Harriett Ruffle</b>. His second wife was <b>Abby E. Wells</b> (b. 1854), daughter of George Wells, and William's mother. After James's death in 1895 she remarried, to Charles Hastings.</p>
+            </article>
+            <article class="card" id="william-reed">
+              <h3>William Erving Reed</h3>
+              <div class="meta"><span class="dates">b. October 27, 1892 – 1957</span><span class="relation">great-grandfather</span><span class="chip doc">Documented</span></div>
+              <p>Son of James Edwin and Abby, registered at birth as "Willie Reed." Stoddard's own vital statistics for 1892 record him plainly: born October 27 at Stoddard, the ninth child of James E. Reed, farmer, aged 47, and Abby E. Wells, aged 38, of Deering. A copy of that register page sits in the Society file, and it is reproduced on the <a href="#documents">Documents page</a>.</p>
+              <p>William carries the line out of the Stoddard generation and into the twentieth century. His 1942 draft registration card, filed as William Erving Reed, places him at 54 Station Street, Quincy, Massachusetts, born at Stoddard, with Charlotte named as the person who would always know his address. He is the father of Arthur Reed.</p>
+              <p class="spouse">Wife: <b>Charlotte Evelyn Jellow</b> (1889–1974), married in 1914 at Braintree, Massachusetts. The tree preserves an actual photograph of Charlotte, one of the only real faces among the early generations.</p>
+            </article>
+            <article class="card" id="arthur-reed">
+              <h3>Arthur Reed</h3>
+              <div class="meta"><span class="relation">grandfather</span><span class="chip doc">Documented</span></div>
+              <p>Son of William E. Reed. Arthur is the grandfather of the present generation and the father of three sons, Paul, Arthur and Mark, through whom the modern branches of the family run.</p>
+              <p class="spouse">Wife: <b>Ethel Lois Gould</b>, the family's grandmother on this side, who married into the Reeds. Sons: <b>Paul Reed</b>, <b>Arthur Reed</b> and <b>Mark Reed</b>.</p>
+            </article>
+            <article class="card" id="paul-reed">
+              <h3>Paul Reed</h3>
+              <div class="meta"><span class="relation">father</span><span class="chip doc">Documented</span></div>
+              <p>Son of Arthur Reed, brother of Arthur and Mark. Father of Paul Reed II.</p>
+            </article>
+            <article class="card" id="arthur-reed-uncle">
+              <h3>Arthur Reed</h3>
+              <div class="meta"><span class="relation">uncle</span><span class="chip doc">Documented</span></div>
+              <p>Son of Arthur Reed, named for his father. Brother of Paul and Mark.</p>
+            </article>
+            <article class="card" id="mark-reed">
+              <h3>Mark Reed</h3>
+              <div class="meta"><span class="relation">uncle</span><span class="chip doc">Documented</span></div>
+              <p>Son of Arthur Reed, brother of Paul and Arthur. Father of Dan and Steven.</p>
+              <p class="spouse">Sons: <b>Dan Reed</b> and <b>Steven Reed</b>.</p>
+            </article>
+            <article class="card" id="dan-reed">
+              <h3>Dan Reed</h3>
+              <div class="meta"><span class="relation">cousin, son of Mark</span><span class="chip doc">Documented</span></div>
+              <p>Son of Mark Reed, brother of Steven.</p>
+            </article>
+            <article class="card" id="steven-reed">
+              <h3>Steven Reed</h3>
+              <div class="meta"><span class="relation">cousin, son of Mark</span><span class="chip doc">Documented</span></div>
+              <p>Son of Mark Reed, brother of Dan.</p>
+            </article>
+            <article class="card" id="paul-reed-ii">
+              <h3>Paul Reed II</h3>
+              <div class="meta"><span class="relation">the present day</span><span class="chip doc">Documented</span></div>
+              <p>Son of Paul Reed.</p>
+            </article>
           </div>
+        </section>
 
-          <figure class="framed doc-figure">
+        <!-- ================= THE COLONIAL GENERATIONS, IN THE RECORDS ================= -->
+        <section id="colonial-records">
+          <h2>The colonial generations, in the records</h2>
+          <p class="section-intro">The paper behind the top of the line: the Rowlandson passage that names Thomas Read in captivity, the Falls Fight roster that places him among Captain Turner's men, and the pensioner census that puts Elnathan Read at Cavendish, Vermont at the end of his life. After the documents come the confirmation of the Isaiah to John link, and the two claims this site keeps flagged as disputed.</p>
+<figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
               <img src="assets/rowlandson-thirteenth-remove.png" alt="The Thirteenth Remove from Mary Rowlandson's Narrative of the Captivity and Restoration, 1682, with the passage naming Thomas Read as a captive brought from Hadley" width="1700" height="2200" loading="lazy" />
               <span class="shot-hint">Tap to view the page full size</span>
@@ -719,7 +718,7 @@
         <!-- ================= THE PRESCOTTS ================= -->
         <section id="prescotts">
           <h2>The Prescotts</h2>
-          <p class="section-intro">The Reeds are not the only old family in this record. <a href="#elnathan-read"><strong>Elnathan Read</strong></a> (1758–1841), Isaiah's older brother and the present generation's 4th great-granduncle, married <strong>Anne Prescott</strong> at Westford in 1781, and her family reaches back as far as ours does: six generations from Anne to <strong>John Prescott</strong>, the founder of Lancaster, Massachusetts, who arrived in New England in 1640. The line below is the one the published Prescott genealogy gives, checked where it meets the records this family holds: Westford's own vital records hold the 1781 marriage, and the documents behind every claim here are gathered on the <a href="#documents">Documents page</a>.</p>
+          <p class="section-intro">The Reeds are not the only old family in this record. <a href="#elnathan-read" data-open-card="elnathan-read"><strong>Elnathan Read</strong></a> (1758–1841), Isaiah's older brother and the present generation's 4th great-granduncle, married <strong>Anne Prescott</strong> at Westford in 1781, and her family reaches back as far as ours does: six generations from Anne to <strong>John Prescott</strong>, the founder of Lancaster, Massachusetts, who arrived in New England in 1640. The line below is the one the published Prescott genealogy gives, checked where it meets the records this family holds: Westford's own vital records hold the 1781 marriage, and the documents behind every claim here are gathered on the <a href="#documents">Documents page</a>.</p>
           <ol class="lineage">
             <li>
               <span class="node"></span>
@@ -749,7 +748,7 @@
             <li id="anne-prescott">
               <span class="node"></span>
               <div class="who"><span class="gen">Gen. VI</span><span class="name">Anne (Annie) Prescott</span><span class="dates">b. May 7, 1761 – d. December 6, 1821</span><span class="place">born at Westford, Massachusetts</span><span class="chip doc">Documented</span></div>
-              <div class="kids">Married <a href="#elnathan-read">Elnathan Read</a> at Westford in 1781, a marriage Westford's records hold. Elnathan was Joshua and Mary Read's son and Isaiah's older brother, so Anne married into the generation above the Stoddard line: her children by Elnathan are Read cousins of everyone on the Family line page, not ancestors of it. Her dates come from the published Prescott genealogy; the family tree had her only as "Anne Prescott" of Westford, with no parents, which is where this page picks her up.</div>
+              <div class="kids">Married <a href="#elnathan-read" data-open-card="elnathan-read">Elnathan Read</a> at Westford in 1781, a marriage Westford's records hold. Elnathan was Joshua and Mary Read's son and Isaiah's older brother, so Anne married into the generation above the Stoddard line: her children by Elnathan are Read cousins of everyone on the Family line page, not ancestors of it. Her dates come from the published Prescott genealogy; the family tree had her only as "Anne Prescott" of Westford, with no parents, which is where this page picks her up.</div>
             </li>
           </ol>
 
@@ -779,7 +778,7 @@
             <article class="card">
               <h3>The marriage that joins the families</h3>
               <div class="meta"><span class="dates">Westford, Massachusetts · 1781</span><span class="chip doc">Documented</span></div>
-              <p>Westford's records hold the 1781 marriage of <a href="#elnathan-read">Elnathan Read</a> and Anne Prescott, and that one entry ties two of Massachusetts's old families together. Elnathan's brothers went on to Stoddard, New Hampshire: Isaiah founded the line this site documents, and Joshua Jr. served in the Revolution's last years. Elnathan's own branch took a different road, west into Vermont, and it is through him, not through Isaiah, that the Prescotts connect to this family.</p>
+              <p>Westford's records hold the 1781 marriage of <a href="#elnathan-read" data-open-card="elnathan-read">Elnathan Read</a> and Anne Prescott, and that one entry ties two of Massachusetts's old families together. Elnathan's brothers went on to Stoddard, New Hampshire: Isaiah founded the line this site documents, and Joshua Jr. served in the Revolution's last years. Elnathan's own branch took a different road, west into Vermont, and it is through him, not through Isaiah, that the Prescotts connect to this family.</p>
             </article>
             <article class="card">
               <h3>Westford to Cavendish, Vermont</h3>
@@ -852,7 +851,7 @@
               <img src="assets/rowlandson-thirteenth-remove.png" alt="The Thirteenth Remove from Mary Rowlandson's Narrative of the Captivity and Restoration, 1682, with the passage naming Thomas Read as a captive brought from Hadley" width="1700" height="2200" loading="lazy" />
               <span class="shot-hint">Tap to view the page full size</span>
             </button>
-            <figcaption>From Mary Rowlandson's Narrative of the Captivity and Restoration (1682), the Thirteenth Remove, the passage that names Thomas Read: "brought one captive with them, viz. Thomas Read." Rowlandson spoke with him in the camps, and he told her he had seen her husband alive in Boston. Firsthand evidence of Thomas's captivity, behind the account on <a href="#colonial">the Colonial line page</a>.</figcaption>
+            <figcaption>From Mary Rowlandson's Narrative of the Captivity and Restoration (1682), the Thirteenth Remove, the passage that names Thomas Read: "brought one captive with them, viz. Thomas Read." Rowlandson spoke with him in the camps, and he told her he had seen her husband alive in Boston. Firsthand evidence of Thomas's captivity, behind the account on <a href="#documented">the Family line page</a>.</figcaption>
           </figure>
           <figure class="framed doc-figure">
             <button class="shot-btn" data-zoom aria-haspopup="dialog">
@@ -926,12 +925,12 @@
             <li>
               <span class="src-title"><a href="https://en.wikisource.org/wiki/A_Narrative_of_the_Captivity%2C_Sufferings%2C_and_Removes_of_Mrs._Mary_Rowlandson/13_The_thirteenth_Remove" target="_blank" rel="noopener">Mary Rowlandson, Narrative of the Captivity: The Thirteenth Remove</a></span>
               <span class="src-meta">PUBLISHED 1682 · WIKISOURCE</span>
-              <p>A firsthand account written by a fellow captive. Rowlandson names Thomas Read, describes his fear that he would be killed, and records his news that he had recently seen her husband alive. Contemporary evidence, published six years after the war. The Thirteenth Remove passage is reproduced on this page and on the Colonial line page.</p>
+              <p>A firsthand account written by a fellow captive. Rowlandson names Thomas Read, describes his fear that he would be killed, and records his news that he had recently seen her husband alive. Contemporary evidence, published six years after the war. The Thirteenth Remove passage is reproduced on this page and on the Family line page.</p>
             </li>
             <li>
               <span class="src-title">Soldiers in King Philip's War</span>
               <span class="src-meta">GEORGE MADISON BODGE · BOSTON, 1906 · 3RD EDITION</span>
-              <p>Bodge's compilation prints the Falls Fight roster approved by the Committee of the General Court in June 1736, the list drawn up for the township grants to the soldiers and their descendants. Pages 250 and 251 are reproduced on this page and on the Colonial line page: on p. 251 the right-hand column reads "Read, Thomas, Westford," the published record placing Thomas Read among Captain William Turner's men at the Falls Fight of May 19, 1676.</p>
+              <p>Bodge's compilation prints the Falls Fight roster approved by the Committee of the General Court in June 1736, the list drawn up for the township grants to the soldiers and their descendants. Pages 250 and 251 are reproduced on this page and on the Family line page: on p. 251 the right-hand column reads "Read, Thomas, Westford," the published record placing Thomas Read among Captain William Turner's men at the Falls Fight of May 19, 1676.</p>
             </li>
             <li>
               <span class="src-title">Early Generations of the Founders of Old Dunstable</span>
@@ -971,17 +970,17 @@
             <li>
               <span class="src-title">The published Prescott genealogy</span>
               <span class="src-meta">JOHN PRESCOTT OF LANCASTER AND HIS DESCENDANTS</span>
-              <p>The source for the Prescott line on <a href="#prescotts">the Prescotts page</a>: John Prescott, founder of Lancaster (in New England by 1640), through Jonas (b. 1648), Jonas Jr. (b. 1678), Jonas (b. 1703) and Timothy (b. 1728) of Westford, to Anne (Annie) Prescott, born May 7, 1761, died December 6, 1821, who married <a href="#elnathan-read">Elnathan Read</a>. It is a published genealogy, so it is used the way this site uses the 1915 Reed book, as the laid-out line to be checked against records, and where it disagrees with the family tree it is flagged, not followed silently: it gives Elnathan's death as 1845 against the tree's 1841, and lists six children of Elnathan and Anne born 1783 to 1792 against the tree's two born 1798 and 1800. Both points stand open on the Prescotts page. The book's pages for entry 603 and for entries 1077 to 1082 are reproduced on this page and on the Prescotts page.</p>
+              <p>The source for the Prescott line on <a href="#prescotts">the Prescotts page</a>: John Prescott, founder of Lancaster (in New England by 1640), through Jonas (b. 1648), Jonas Jr. (b. 1678), Jonas (b. 1703) and Timothy (b. 1728) of Westford, to Anne (Annie) Prescott, born May 7, 1761, died December 6, 1821, who married <a href="#elnathan-read" data-open-card="elnathan-read">Elnathan Read</a>. It is a published genealogy, so it is used the way this site uses the 1915 Reed book, as the laid-out line to be checked against records, and where it disagrees with the family tree it is flagged, not followed silently: it gives Elnathan's death as 1845 against the tree's 1841, and lists six children of Elnathan and Anne born 1783 to 1792 against the tree's two born 1798 and 1800. Both points stand open on the Prescotts page. The book's pages for entry 603 and for entries 1077 to 1082 are reproduced on this page and on the Prescotts page.</p>
             </li>
             <li>
               <span class="src-title">Census of Pensioners for Revolutionary or Military Services, 1840</span>
               <span class="src-meta">UNITED STATES CENSUS · FEDERAL RECORD</span>
-              <p>The federal census of Revolutionary pensioners, taken with the 1840 census, lists Elnathan Read at Cavendish, Vermont, aged 85. It is a primary record from his own lifetime, and it is what places Isaiah's brother in Vermont at the end of his life, drawing a soldier's pension in the town where he died, independent of any family tree. Elnathan's entry is reproduced on this page, on the Colonial line page and on the Prescotts page.</p>
+              <p>The federal census of Revolutionary pensioners, taken with the 1840 census, lists Elnathan Read at Cavendish, Vermont, aged 85. It is a primary record from his own lifetime, and it is what places Isaiah's brother in Vermont at the end of his life, drawing a soldier's pension in the town where he died, independent of any family tree. Elnathan's entry is reproduced on this page, on the Family line page and on the Prescotts page.</p>
             </li>
             <li>
               <span class="src-title">Massachusetts Soldiers and Sailors of the Revolutionary War</span>
               <span class="src-meta">MASSACHUSETTS ARCHIVES · OFFICIAL ROSTER</span>
-              <p>The official roster compiled from the Massachusetts archives, and the source for the Revolutionary War service details on the Colonial line page. For Elnathan Read it records militia service in 1776 and a three-year Continental enlistment as a Private in Capt. Ballard's company, Col. Alden's regiment (afterwards the 7th Massachusetts), May 1777 to May 1780, with service at Cherry Valley, New York in 1779. For Joshua Read Jr. it records Continental service at sixteen: nine months in 1779–1780 with Col. Jackson's 8th Massachusetts, then a six-month levy through the end of 1780. For Joshua Read it records militia service only: three days on the April 19, 1775 alarm in Capt. Minot's company, with no Continental enlistment.</p>
+              <p>The official roster compiled from the Massachusetts archives, and the source for the Revolutionary War service details on the Family line page. For Elnathan Read it records militia service in 1776 and a three-year Continental enlistment as a Private in Capt. Ballard's company, Col. Alden's regiment (afterwards the 7th Massachusetts), May 1777 to May 1780, with service at Cherry Valley, New York in 1779. For Joshua Read Jr. it records Continental service at sixteen: nine months in 1779–1780 with Col. Jackson's 8th Massachusetts, then a six-month levy through the end of 1780. For Joshua Read it records militia service only: three days on the April 19, 1775 alarm in Capt. Minot's company, with no Continental enlistment.</p>
             </li>
           </ul>
         </section>
@@ -996,7 +995,7 @@
         <section id="norelation">
           <h2>The other Reeds of Stoddard: no relation</h2>
           <div class="prose">
-            <p>Stoddard had Reeds before ours arrived. Gould's <em>History of Stoddard</em> (1897) records a Reed presence in town going back to the Revolutionary generation: Joshua Reed, a soldier who lived in Stoddard after the war and whose name is still on Reed's Pond. The oldest gravestone Gould found in the town burying ground, dated January 1, 1792, marks a child of that Joshua. All of this predates Isaiah's move up from Westford in 1799, and <strong>no record connects the earlier households to his</strong>. That is worth saying precisely: what the records show is an absence of any link, not a proof that none could exist. If a document ever connects them, this page gets corrected. One correction of exactly that kind has already landed: Elnathan Reed, whom Gould lists among Stoddard's Revolutionary soldiers, sits in Paul's own family tree as a son of Joshua Read and Mary Spaulding of Westford, Isaiah's older brother, so he is family and now stands with the line on the Colonial line page, not here.</p>
+            <p>Stoddard had Reeds before ours arrived. Gould's <em>History of Stoddard</em> (1897) records a Reed presence in town going back to the Revolutionary generation: Joshua Reed, a soldier who lived in Stoddard after the war and whose name is still on Reed's Pond. The oldest gravestone Gould found in the town burying ground, dated January 1, 1792, marks a child of that Joshua. All of this predates Isaiah's move up from Westford in 1799, and <strong>no record connects the earlier households to his</strong>. That is worth saying precisely: what the records show is an absence of any link, not a proof that none could exist. If a document ever connects them, this page gets corrected. One correction of exactly that kind has already landed: Elnathan Reed, whom Gould lists among Stoddard's Revolutionary soldiers, sits in Paul's own family tree as a son of Joshua Read and Mary Spaulding of Westford, Isaiah's older brother, so he is family and now stands with the line on the Family line page, not here.</p>
             <p>They get a page of their own because the trap is a real one. Same small town, same surname, and even the same first names: Stoddard's Joshua Reed invites a merge with Joshua Read of Westford, Isaiah's father, and a tree built on name matches alone will make that merge without blinking. Below is what the records actually say about each of them, kept apart from our line, followed by the working rule for telling the two families apart.</p>
           </div>
           <div class="cards">
@@ -1028,6 +1027,13 @@
         <p><strong>A note on the name.</strong> The colonial generations spelled it Read: Thomas Read, Joseph Read, Joshua Read. The Stoddard line and the modern family spell it Reed. Both spellings appear in the records for the same people, and this page keeps each generation's own spelling where the sources give one.</p>
         <p>Entries marked documented are the family's settled line. Everything else is labeled as what it is: a lead, an open link, or a claim in dispute, until the records say otherwise.</p>
       </footer>
+    </div>
+
+    <div class="person-dialog" id="personDialog" role="dialog" aria-modal="true" aria-label="Person card">
+      <div class="person-box">
+        <button type="button" class="person-close" id="personClose" aria-label="Close this card">&times;</button>
+        <div id="personBody"></div>
+      </div>
     </div>
 
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Document image, enlarged">
@@ -1066,6 +1072,7 @@
 
         function panelForHash(hash) {
           if (!hash || hash === '#') return null;
+          if (hash === '#colonial') hash = '#family';
           var el = document.querySelector(hash);
           if (!el) return null;
           var panel = el.closest ? el.closest('.panel') : null;
@@ -1105,6 +1112,7 @@
         /* In-page links that point into another panel switch to that panel first. */
         Array.prototype.forEach.call(document.querySelectorAll('a[href^="#"]'), function (a) {
           a.addEventListener('click', function (e) {
+            if (a.hasAttribute('data-open-card')) return;
             var hash = a.getAttribute('href');
             var target = document.querySelector(hash);
             if (!target) return;
@@ -1117,14 +1125,76 @@
           });
         });
 
+        /* ---------- Person cards: names open the card in a dialog ---------- */
+        root.classList.add('cards-dialog');
+        var personDialog = document.getElementById('personDialog');
+        var personBody = document.getElementById('personBody');
+        var personClose = document.getElementById('personClose');
+        var personCardEl = null;
+        var personHome = null;
+        var personTrigger = null;
+        function openPersonCard(id, trigger) {
+          var card = document.getElementById(id);
+          if (!card || !personDialog) return;
+          if (personCardEl) closePersonCard();
+          personHome = document.createComment('card-home');
+          card.parentNode.insertBefore(personHome, card);
+          personCardEl = card;
+          personTrigger = trigger || null;
+          personBody.appendChild(card);
+          var heading = card.querySelector('h3');
+          personDialog.setAttribute('aria-label', heading ? heading.textContent : 'Person card');
+          personDialog.classList.add('on');
+          personDialog.scrollTop = 0;
+          document.body.style.overflow = 'hidden';
+          personClose.focus();
+        }
+        function closePersonCard() {
+          if (!personCardEl) { if (personDialog) personDialog.classList.remove('on'); return; }
+          personHome.parentNode.insertBefore(personCardEl, personHome);
+          personHome.parentNode.removeChild(personHome);
+          personCardEl = null;
+          personHome = null;
+          personDialog.classList.remove('on');
+          document.body.style.overflow = '';
+          if (personTrigger && personTrigger.focus) personTrigger.focus();
+          personTrigger = null;
+        }
+        document.addEventListener('click', function (e) {
+          var t = e.target && e.target.closest ? e.target.closest('[data-open-card]') : null;
+          if (!t) return;
+          e.preventDefault();
+          openPersonCard(t.getAttribute('data-open-card'), t);
+        });
+        if (personClose) personClose.addEventListener('click', closePersonCard);
+        if (personDialog) {
+          personDialog.addEventListener('click', function (e) {
+            if (e.target === personDialog) closePersonCard();
+          });
+          personBody.addEventListener('click', function (e) {
+            var a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+            if (a && !a.hasAttribute('data-open-card')) closePersonCard();
+          });
+        }
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && personDialog && personDialog.classList.contains('on')) closePersonCard();
+        });
+
         /* Open on the panel named by the URL hash, if any. */
-        var startName = panelForHash(window.location.hash) ||
-          (panels[window.location.hash.slice(1)] ? window.location.hash.slice(1) : 'story');
+        var startHash = window.location.hash === '#colonial' ? '#family' : window.location.hash;
+        var startName = panelForHash(startHash) ||
+          (panels[startHash.slice(1)] ? startHash.slice(1) : 'story');
         var startTarget = null;
-        if (window.location.hash && panelForHash(window.location.hash)) {
-          startTarget = document.querySelector(window.location.hash);
+        var startCard = null;
+        if (startHash && panelForHash(startHash)) {
+          startTarget = document.querySelector(startHash);
+          if (startTarget && startTarget.classList && startTarget.classList.contains('card')) {
+            startCard = startTarget;
+            startTarget = null;
+          }
         }
         activate(startName, startTarget);
+        if (startCard) openPersonCard(startCard.id, null);
 
         /* ---------- Lightbox ---------- */
         var box = document.getElementById('lightbox');
